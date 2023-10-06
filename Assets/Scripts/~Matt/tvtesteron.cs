@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class tvtesteron : MonoBehaviour
 {
-    public Material tvVideoMat;
-    public MeshRenderer tvRender;
+    public VideoPlayer videoPlayer;
+    public MeshRenderer tvRenderer;
+    public AudioSource audioSource;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) 
+       if(Input.GetKeyDown(KeyCode.E))
         {
-            tvRender.material = tvVideoMat;       
+            tvRenderer.enabled = true;
+            audioSource.Play();
+            videoPlayer.Play();
         }
     }
 }

@@ -114,9 +114,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0.322
     - _GlossyReflections: 0
-    - _Metallic: 0
+    - _Metallic: 0.168
     - _Mode: 0
-    - _OcclusionStrength: 0.7
+    - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _RMS: 0.4088978
@@ -124,7 +124,7 @@ Material:
     - _ShadeRange: 0.02
     - _ShadingStrength: 1
     - _Shininess: 0.82554394
-    - _Smoothness: 0.322
+    - _Smoothness: 0.175
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
