@@ -1,19 +1,10 @@
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health
 {
-    [SerializeField] private float maximumHealth = 100f;
-    [SerializeField] private float currentHealth;
-    [SerializeField] private float healthRegen; // flat health regen per second
-
-    private void Start()
-    {
-        currentHealth = maximumHealth;
-    }
-    private void Update()
-    {
-        RegenerateHealth();
-    }
+    private float maximumHealth = 100f;
+    private float currentHealth;
+    private float healthRegen; // flat health regen per second
 
     private void RegenerateHealth()
     {
@@ -40,4 +31,9 @@ public class Health : MonoBehaviour
             // Not sure exactly how I want to go about this yet, still brainstorming
     }
 
+    public Health(float maxHealth)
+    {
+        maximumHealth = maxHealth;
+        currentHealth = maxHealth;
+    }
 }
