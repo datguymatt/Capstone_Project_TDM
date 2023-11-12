@@ -36,4 +36,6 @@ public class Health
         maximumHealth = maxHealth;
         currentHealth = maxHealth;
     }
+
+    public Health() { }
 }
