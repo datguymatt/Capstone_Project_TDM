@@ -98,9 +98,9 @@ Material:
     - _DstBlend: 0
     - _EmissionScaleUI: 0
     - _EnvironmentReflections: 1
-    - _GlossMapScale: 0
+    - _GlossMapScale: 1
     - _Glossiness: 0.15
-    - _GlossyReflections: 0
+    - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 0.75
@@ -130,7 +130,7 @@ Material:
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6
---- !u!114 &7719354516007170543
+--- !u!114 &811582974312644870
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -111,9 +111,9 @@ Material:
     - _ExtrudeHeight: 0.05
     - _GlossFromBrightness_exponent: 8
     - _GlossFromBrightness_multiplicator: 0.3333
-    - _GlossMapScale: 0
+    - _GlossMapScale: 1
     - _Glossiness: 0.3
-    - _GlossyReflections: 0
+    - _GlossyReflections: 1
     - _LightmapShading: 0.7
     - _Metallic: 0
     - _Mode: 0
@@ -161,7 +161,7 @@ Material:
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6
---- !u!114 &9026964138278806715
+--- !u!114 &5263319970081882071
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
