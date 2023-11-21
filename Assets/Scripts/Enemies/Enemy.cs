@@ -6,12 +6,17 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
+    private RoundManager _roundManager;
     public GameObject player;
     public float speed = 2f;
+    public int hitCount = 0;
     
     // Start is called before the first frame update
     void Awake()
     {
+        player = GameObject.Find("Player");
+        //!!!!!REFACTOR
+        _roundManager = GameObject.Find("GameManager").GetComponent<RoundManager>();
         
     }
 
@@ -26,6 +31,19 @@ public class Enemy : MonoBehaviour
         {
             // Swap the position of the cylinder.
             player.transform.position *= -1.0f;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Im here");
+        //simple destroy enemy to see round flow
+        if (collision.gameObject.CompareTag("PlayerProjectile"))
+        {
+            Debug.Log("Im here");
+            //substract an enemy from 
+            _roundManager.KillEnemy();
+            Destroy(this.gameObject);
         }
     }
 }
