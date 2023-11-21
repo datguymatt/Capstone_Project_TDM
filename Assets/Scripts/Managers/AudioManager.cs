@@ -1,21 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+ 
 public class AudioManager : MonoBehaviour
 {
-    [Header("Channels")]
+    [Header("Music")]
     //channels
-    [SerializeField] private AudioSource ambienceChannel;
-    [SerializeField] private AudioSource[] sfxOneShotChannels;
     [SerializeField] private AudioSource musicChannel;
-
-    [Header("Clips")]
-    //clips
-    [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private AudioClip[] musicClips;
+
+    [Header("SFX Oneshots")]
+    //clips
+    [SerializeField] private AudioSource[] sfxOneShotChannels;
+    [SerializeField] private AudioClip[] sfxOneShotClips;
+
+    [Header("Ambience")]
+    //Ambience
+    [SerializeField] private AudioSource ambienceChannel;
+
+    //search
     AudioClip searchResult;
+
 
     public static AudioManager _instance;
 
@@ -29,7 +36,11 @@ public class AudioManager : MonoBehaviour
         {
             _instance = new AudioManager();
         }
+
+        
     }
+
+    
 
     public int SelectChannel()
     {
@@ -52,7 +63,7 @@ public class AudioManager : MonoBehaviour
         if (audioSourceType == "sfx")
         {
             
-            foreach (AudioClip clip in audioClips)
+            foreach (AudioClip clip in sfxOneShotClips)
             {
                 if (clip.name == clipName)
                 {
