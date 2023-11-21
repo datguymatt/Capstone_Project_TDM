@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class PlayerShoot : Player
 {
     // Components, children & references
     private Transform shootPoint;
@@ -10,6 +10,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float fireDelay; // This is long the player must wait between shots, can be the focus of an upgrade, perhaps?
     private float fireTimer; // This is for keeping track of time between shots, acts as a simple timer
     [SerializeField] private float shootForce = 1000f;
+
+    
     
 
     private void Start()
@@ -44,6 +46,8 @@ public class PlayerShoot : MonoBehaviour
 
             // reset fire delay
             fireTimer = fireDelay;
+            audioManager.PlaySFXAudio("flagpole-bump");
+            
         }
     }
 }
