@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class Enemy : MonoBehaviour
+
+public class MattEnemyTester : MonoBehaviour
 {
     private RoundManager _roundManager;
     public GameObject player;
