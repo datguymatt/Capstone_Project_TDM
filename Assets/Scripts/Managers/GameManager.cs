@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager _instance;
     public GameObject _player;
 
+    //spawn related
+    public Transform[] respawnPositions;
+
+    
+
     public enum gameState
     {
         Menu,
@@ -19,8 +24,7 @@ public class GameManager : MonoBehaviour
 
     
 
-    //spawn related
-    public Transform[] respawnPositions;
+    
     void Awake()
     {
         
@@ -43,6 +47,4 @@ public class GameManager : MonoBehaviour
         //use health?.Invoke() to invoke this method when health falls to 0 or below
         _player.transform.position = respawnPositions[Random.Range(0, respawnPositions.Length)].position;
     }
-
-    
 }
