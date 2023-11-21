@@ -18,8 +18,8 @@ public class Health
 
     public void TakeDamage(float damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0 , maximumHealth);
-        if(currentHealth <= 0)
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maximumHealth);
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -27,8 +27,8 @@ public class Health
 
     private void Die()
     {
-            // Die
-            // Not sure exactly how I want to go about this yet, still brainstorming
+        // Die
+        // Not sure exactly how I want to go about this yet, still brainstorming
     }
 
     public Health(float maxHealth)

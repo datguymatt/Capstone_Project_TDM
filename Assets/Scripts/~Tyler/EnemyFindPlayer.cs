@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyFindPlayer : EnemyState
 {
@@ -38,7 +35,7 @@ public class EnemyFindPlayer : EnemyState
     //Calculates the position perpendicular from enemy to player at a set distance of destinationRadiusFromPlayer
     private Vector3 ApproachAroundPlayer(Vector3 player, EnemyStateManager manager)
     {
-        Vector3 difference = manager.transform.position - player;               
+        Vector3 difference = manager.transform.position - player;
         Vector3 direction = new Vector3(difference.z, 0, -difference.x);
         direction = direction.normalized;
         Vector3 target = player + direction * destinationRadiusFromPlayer;

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     // This is just a simple player controller that I am planning on working on more later. Just the basics to get us ready to test stuff
 
@@ -57,13 +55,13 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         // Forward movement
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             playerController.Move(transform.forward * movementSpeed * moveMultiplier * Time.deltaTime);
         }
 
         // Backwards movement
-        if(Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             playerController.Move(-transform.forward * movementSpeed * moveMultiplier * Time.deltaTime);
         }
@@ -96,5 +94,10 @@ public class PlayerController : MonoBehaviour
     {
         playerVelocity.y += gravity * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
+    }
+
+    public void GetDamage(float damage)
+    {
+        Debug.Log($"The player took '{damage}' damage");
     }
 }
