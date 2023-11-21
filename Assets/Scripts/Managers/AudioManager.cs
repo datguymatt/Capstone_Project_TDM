@@ -5,11 +5,46 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSFXSource;
-    [SerializeField] private AudioSource audioMusicSource;
+    [Header("Channels")]
+    //channels
+    [SerializeField] private AudioSource ambienceChannel;
+    [SerializeField] private AudioSource[] sfxOneShotChannels;
+    [SerializeField] private AudioSource musicChannel;
+
+    [Header("Clips")]
+    //clips
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private AudioClip[] musicClips;
     AudioClip searchResult;
+
+    public static AudioManager _instance;
+
+    void Awake()
+    {
+        if (_instance != null)
+        {
+            Debug.LogError("Already an instance of " + this.gameObject.name);
+        }
+        else
+        {
+            _instance = new AudioManager();
+        }
+    }
+
+    public int SelectChannel()
+    {
+        //will boot out the first channel if it can't find anything
+        int channelNumber = 0;
+        for (int i = 0; i < sfxOneShotChannels.Length; i++)
+        {
+            if (!sfxOneShotChannels[i].isPlaying)
+            {
+                channelNumber = i;
+                break;
+            }
+        }
+        return channelNumber;
+    }
 
     public AudioClip SearchForClip(string clipName, string audioSourceType)
     {
@@ -55,9 +90,9 @@ public class AudioManager : MonoBehaviour
         {
             if (clipFound.name == clip)
             {
-                
-                    audioSFXSource.clip = clipFound;
-                    audioSFXSource.PlayOneShot(clipFound);
+
+                sfxOneShotChannels[SelectChannel()].clip = clipFound;
+                    sfxOneShotChannels[SelectChannel()].PlayOneShot(clipFound);
             }
         }
         else
@@ -69,7 +104,7 @@ public class AudioManager : MonoBehaviour
     public void StopSFX()
     {
         Debug.Log("Stopping");
-        audioSFXSource.Stop();
+        sfxOneShotChannels[SelectChannel()].Stop();
     }
 
     public void PlayMusicAudio(string clip)
@@ -80,8 +115,8 @@ public class AudioManager : MonoBehaviour
         {
             if (clipFound.name == clip)
             {
-                audioMusicSource.clip = clipFound;
-                audioMusicSource.PlayOneShot(clipFound);
+                musicChannel.clip = clipFound;
+                musicChannel.PlayOneShot(clipFound);
             }
         }
         else
