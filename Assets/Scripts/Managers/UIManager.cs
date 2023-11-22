@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateEnemiesLeftUI()
     {
-        enemiesLeft.text = "Enemies: " + roundManager.enemiesLeft.ToString();
+        enemiesLeft.text = "Vamps: " + roundManager.enemiesLeft.ToString();
     }
 
     public void UpdateRoundNumberUI()

@@ -49,7 +49,7 @@ public class RoundManager : MonoBehaviour
     {
         enemiesLeft--;
         EnemyKilled?.Invoke();
-        if (enemiesLeft == 0)
+        if (enemiesLeft == 0 && enemiesSpawned == roundEnemyStartCount)
         {
             //UI listener queues visual signal of end
             RoundEnd?.Invoke();
@@ -61,7 +61,7 @@ public class RoundManager : MonoBehaviour
 
     public void InitializeRound()
     {
-
+        enemiesSpawned = 0;
         if (roundCounter < totalRounds)
         {
             // new round starts
