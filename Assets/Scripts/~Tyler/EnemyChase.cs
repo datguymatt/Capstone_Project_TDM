@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyChase : EnemyState
 {
+    private float distance;
     public override void OnStateEnter(EnemyStateManager manager)
     {
 
@@ -14,15 +15,21 @@ public class EnemyChase : EnemyState
 
     public override void OnStateUpdate(EnemyStateManager manager)
     {
-        if (manager.startChaseDistance + 2f >= Vector3.Distance(manager.transform.position, manager.playerTransform.position) && Vector3.Distance(manager.transform.position, manager.playerTransform.position) > manager.enemyPounceRange)
+        distance = Vector3.Distance(manager.transform.position, manager.playerTransform.position);
+
+        if (manager.startChaseDistance >= distance && distance > manager.jumpAttackRange)
         {
             manager.agent.destination = manager.playerTransform.position;
         }
-        if (Vector3.Distance(manager.transform.position, manager.playerTransform.position) <= manager.enemyPounceRange)
+        if (distance <= manager.jumpAttackRange)
         {
             //Non implemented feature* 
             //Check how many vampires are in attack state already if there are too many start circling player and wait to enter attack state otherwise enter attackstate 
-            manager.ChangeState(manager.attackState);
+            manager.ChangeState(manager.circleState);
+        }
+        if (distance > manager.startChaseDistance)
+        {
+            manager.ChangeState(manager.findPlayerState);
         }
     }
 }

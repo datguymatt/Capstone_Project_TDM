@@ -221,12 +221,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &546989861 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3963234145192841056, guid: a2c118bc07b36374c8694526872b5b05,
-    type: 3}
-  m_PrefabInstance: {fileID: 979862858}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &711859087
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,11 +574,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: VampireEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 329646833033735093, guid: 3643580e724431d428341293a3252730,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 329646833033735093, guid: 3643580e724431d428341293a3252730,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 329646833033735094, guid: 3643580e724431d428341293a3252730,
         type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 546989861}
+      objectReference: {fileID: 0}
+    - target: {fileID: 329646833033735094, guid: 3643580e724431d428341293a3252730,
+        type: 3}
+      propertyPath: destinationRadiusFromPlayer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 329646833033735095, guid: 3643580e724431d428341293a3252730,
         type: 3}
       propertyPath: m_RootOrder
@@ -603,7 +612,7 @@ PrefabInstance:
     - target: {fileID: 329646833033735095, guid: 3643580e724431d428341293a3252730,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.051
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 329646833033735095, guid: 3643580e724431d428341293a3252730,
         type: 3}

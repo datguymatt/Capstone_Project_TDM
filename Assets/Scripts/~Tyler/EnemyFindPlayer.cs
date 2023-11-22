@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class EnemyFindPlayer : EnemyState
 {
-    [SerializeField] private float destinationRadiusFromPlayer = 15f;
-    [SerializeField] private float approachSpeedMultiplyer = 0.6f;
-
     private float baseSpeed;
     public override void OnStateEnter(EnemyStateManager manager)
     {
         baseSpeed = manager.agent.speed;
-        manager.agent.speed = approachSpeedMultiplyer * baseSpeed;
+        manager.agent.speed = manager.approachSpeedMultiplyer * baseSpeed;
     }
 
     public override void OnStateExit(EnemyStateManager manager)
@@ -38,7 +35,7 @@ public class EnemyFindPlayer : EnemyState
         Vector3 difference = manager.transform.position - player;
         Vector3 direction = new Vector3(difference.z, 0, -difference.x);
         direction = direction.normalized;
-        Vector3 target = player + direction * destinationRadiusFromPlayer;
+        Vector3 target = player + direction * manager.destinationRadiusFromPlayer;
         return target;
     }
 }
