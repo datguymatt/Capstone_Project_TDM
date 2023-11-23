@@ -38523,7 +38523,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3909816970197606517, guid: 5150d4d374fc8454498fee7090897528,
     type: 3}
   fireDelay: 0.11
-  shootForce: 1950.88
+  shootForce: 3000
 --- !u!1 &243647397437524249
 GameObject:
   m_ObjectHideFlags: 0
@@ -48461,6 +48461,11 @@ MonoBehaviour:
   sprintMultiplier: 3
   turnSpeed: 360
   gravity: -10
+  jumpVelocity: 20
+  groundCheck: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &8869265525734011900
 Transform:
   m_ObjectHideFlags: 0
