@@ -21,18 +21,12 @@ public class EnemyAttack : EnemyState
 
     public override void OnStateExit(EnemyStateManager manager)
     {
-        Debug.Log("Exiting Attack Ended");
-        manager.StopAllCoroutines();
+        Debug.Log("Exiting Attack");
     }
 
     public override void OnStateUpdate(EnemyStateManager manager)
     {
         distance = Vector3.Distance(manager.transform.position, manager.playerTransform.position);
-        if (distance > manager.jumpAttackRange && !isAttacking)
-        {
-            manager.ChangeState(manager.chaseState);
-        }
-
         if (!isAttacking)
         {
             manager.agent.destination = manager.playerTransform.position;
@@ -59,7 +53,7 @@ public class EnemyAttack : EnemyState
             yield return null;
         }
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[1], manager.attackDamage, isAttacking));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         Debug.Log("Jump Attack Ended");
         //SetTrigger for attack animation to end
 
@@ -68,7 +62,9 @@ public class EnemyAttack : EnemyState
         {
             manager.agent.Warp(hit.position);
         }
+
         isAttacking = false;
+        yield return new WaitForSeconds(2f);
         manager.ChangeState(manager.transitionState);
     }
 
@@ -83,7 +79,6 @@ public class EnemyAttack : EnemyState
         isAttacking = false;
         yield return new WaitForSeconds(cooldown);
         manager.ChangeState(manager.transitionState);
-        yield return null;
     }
 
     private IEnumerator LaunchAttack(Collider col, float damage, bool attacking)

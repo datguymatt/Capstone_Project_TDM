@@ -10,7 +10,7 @@ public class EnemyChase : EnemyState
 
     public override void OnStateExit(EnemyStateManager manager)
     {
-        Debug.Log("Exiting Chase State");
+
     }
 
     public override void OnStateUpdate(EnemyStateManager manager)
@@ -23,9 +23,17 @@ public class EnemyChase : EnemyState
         }
         if (distance <= manager.jumpAttackRange)
         {
-            //Non implemented feature* 
-            //Check how many vampires are in attack state already if there are too many start circling player and wait to enter attack state otherwise enter attackstate 
-            manager.ChangeState(manager.circleState);
+            //Non implemented feature*
+            //Check how many vampires are in attack state already if there are too many start circling player and wait to enter attack state otherwise enter attackstate
+            if (false/*enemiesAttacking >= maxEnemiesAttacking*/)
+            {
+                manager.ChangeState(manager.circleState);
+            }
+            else
+            {
+                manager.ChangeState(manager.transitionState);
+            }
+
         }
         if (distance > manager.startChaseDistance)
         {

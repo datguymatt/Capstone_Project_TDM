@@ -10,12 +10,13 @@ public class EnemyStateManager : MonoBehaviour
     public AttackTransitionState transitionState = new AttackTransitionState();
     public EnemyState currentState;
 
-    public float destinationRadiusFromPlayer = 15f;
+    public float destinationRadiusFromPlayer = 10f;
     public float approachSpeedMultiplyer = 0.6f;
     public float circleSpeedMultiplyer = 0.2f;
+    public float catchUpSpeed = 2.5f;
 
     [Header("Chase Variables")]
-    public float startChaseDistance = 20f;
+    public float startChaseDistance = 25f;
 
     [Header("Attack Variables")]
     public float meleeAttackRange = 1.5f;
@@ -56,6 +57,7 @@ public class EnemyStateManager : MonoBehaviour
 
     public void ChangeState(EnemyState newState)
     {
+        Debug.Log($"Exiting{currentState} and Entering {newState}");
         currentState.OnStateExit(this);
         currentState = newState;
         //Enemy State Tracker event call to update this enemies current state to newState

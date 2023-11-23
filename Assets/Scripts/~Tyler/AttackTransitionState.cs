@@ -11,7 +11,7 @@ public class AttackTransitionState : EnemyState
 
         Debug.Log("Transitioning Attacks");
 
-        if (manager.currentAttack == EnemyStateManager.Attacks.jumpAttack)
+        if (!canJumpAttack)
         {
             manager.StartCoroutine(JumpAttackCooldown(manager));
         }
@@ -32,23 +32,25 @@ public class AttackTransitionState : EnemyState
             {
                 manager.currentAttack = EnemyStateManager.Attacks.meleeAttack;
                 manager.ChangeState(manager.attackState);
+                return;
             }
             if (canJumpAttack && distance > manager.meleeAttackRange)
             {
                 manager.currentAttack = EnemyStateManager.Attacks.jumpAttack;
                 canJumpAttack = false;
                 manager.ChangeState(manager.attackState);
+                return;
             }
             else
             {
                 manager.ChangeState(manager.circleState);
+                return;
             }
         }
     }
 
     private IEnumerator JumpAttackCooldown(EnemyStateManager manager)
     {
-        canJumpAttack = false;
         yield return new WaitForSeconds(manager.jumpAttackCooldown);
         canJumpAttack = true;
         yield return null;
