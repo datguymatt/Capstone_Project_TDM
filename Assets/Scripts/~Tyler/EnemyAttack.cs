@@ -6,31 +6,30 @@ public class EnemyAttack : EnemyState
 {
     private float distance;
     private bool isAttacking;
-    private bool canJumpAttack = true;
     public override void OnStateEnter(EnemyStateManager manager)
     {
         Debug.Log("Starting Attack");
-        manager.StartCoroutine(this.JumpAttack(manager, manager.playerTransform));
+        if (manager.currentAttack == EnemyStateManager.Attacks.jumpAttack)
+        {
+            manager.StartCoroutine(this.JumpAttack(manager, manager.playerTransform));
+        }
+        if (manager.currentAttack == EnemyStateManager.Attacks.meleeAttack)
+        {
+            manager.StartCoroutine(this.MeleeAttack(manager, manager.playerTransform, 2f));
+        }
     }
 
     public override void OnStateExit(EnemyStateManager manager)
     {
-        Debug.Log("Exiting Attack State");
+        Debug.Log("Exiting Attack");
     }
 
     public override void OnStateUpdate(EnemyStateManager manager)
     {
         distance = Vector3.Distance(manager.transform.position, manager.playerTransform.position);
-        if (distance > manager.enemyPounceRange && !isAttacking)
+        if (!isAttacking)
         {
-            manager.StopAllCoroutines();
-            manager.ChangeState(manager.chaseState);
-        }
-
-        if (!canJumpAttack && !isAttacking && distance > manager.enemyPounceRange * 0.5f)
-        {
-            //manager.StopAllCoroutines();
-            //manager.ChangeState(manager.circleState)
+            manager.agent.destination = manager.playerTransform.position;
         }
     }
 
@@ -47,14 +46,14 @@ public class EnemyAttack : EnemyState
         yield return new WaitForSeconds(0.25f);
 
         Vector3 target = new Vector3(player.position.x, startingPosition.y, player.position.z);
-        for (float time = 0; time < 1; time += Time.deltaTime * manager.jumpSpeed)
+        for (float time = 0; time < 1; time += Time.deltaTime * manager.jumpAttackSpeed)
         {
-            manager.transform.position = Vector3.Lerp(startingPosition, target - Vector3.forward, time) + Vector3.up * manager.jumpCurve.Evaluate(time);
+            manager.transform.position = Vector3.Lerp(startingPosition, target, time) + Vector3.up * manager.jumpCurve.Evaluate(time);
             manager.transform.rotation = Quaternion.Slerp(manager.transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x, manager.transform.position.y, player.position.z) - manager.transform.position), time);
             yield return null;
         }
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[1], manager.attackDamage, isAttacking));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         Debug.Log("Jump Attack Ended");
         //SetTrigger for attack animation to end
 
@@ -64,50 +63,22 @@ public class EnemyAttack : EnemyState
             manager.agent.Warp(hit.position);
         }
 
-        manager.agent.destination = player.position;
         isAttacking = false;
-
-        if (distance > manager.meleeAttackRange)
-        {
-            manager.StartCoroutine(MeleeAttack(manager, player, 2f, manager.meleeAttackRange));
-        }
-
-        //Jump Attack Cooldown
-        canJumpAttack = false;
-        yield return new WaitForSeconds(5f);
-        canJumpAttack = true;
+        yield return new WaitForSeconds(2f);
+        manager.ChangeState(manager.transitionState);
     }
 
 
-    private IEnumerator MeleeAttack(EnemyStateManager manager, Transform player, float cooldown, float attackRange)
+    private IEnumerator MeleeAttack(EnemyStateManager manager, Transform player, float cooldown)
     {
-        bool meleeRange = true;
-        //melee attack
-        while (meleeRange)
-        {
-            manager.agent.updateRotation = true;
-            manager.agent.isStopped = true;
-            manager.attackHitboxes[0].enabled = true;
-            isAttacking = true;
-            manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[0], manager.attackDamage, isAttacking));
-            yield return new WaitForSeconds(0.5f);
-            isAttacking = false;
-            manager.agent.isStopped = false;
-            manager.attackHitboxes[0].enabled = false;
-            manager.agent.destination = player.position;
-            yield return new WaitForSeconds(cooldown);
-            if (distance > attackRange) { meleeRange = false; }
-        }
-        if (distance > attackRange && distance < manager.enemyPounceRange && canJumpAttack)
-        {
-            manager.StartCoroutine(JumpAttack(manager, manager.playerTransform));
-        }
-        else
-        {
-            Debug.Log(manager.agent.enabled);
-            manager.agent.destination = player.position;
-        }
-        yield return null;
+        isAttacking = true;
+        manager.agent.isStopped = true;
+        manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[0], manager.attackDamage, isAttacking));
+        yield return new WaitForSeconds(0.5f);
+        manager.agent.isStopped = false;
+        isAttacking = false;
+        yield return new WaitForSeconds(cooldown);
+        manager.ChangeState(manager.transitionState);
     }
 
     private IEnumerator LaunchAttack(Collider col, float damage, bool attacking)

@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 329646833033735093}
   m_Layer: 0
   m_Name: Enemy_Prefab.01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,10 +107,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd98a313bfac9c4aa20d9e8fc0e01e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startChaseDistance: 30
-  enemyPounceRange: 10
-  minJumpDistance: 1.5
-  maxJumpDistance: 10
+  destinationRadiusFromPlayer: 15
+  approachSpeedMultiplyer: 0.6
+  circleSpeedMultiplyer: 0.2
+  catchUpSpeed: 2.5
+  startChaseDistance: 25
+  meleeAttackRange: 3
+  jumpAttackRange: 10
+  jumpAttackCooldown: 5
   jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -144,9 +148,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpSpeed: 1
+  jumpAttackSpeed: 1
   attackDamage: 1
-  meleeAttackRange: 1.5
+  currentAttack: 1
   attackHitboxes:
   - {fileID: 329646831895206993}
   - {fileID: 329646833624372740}
@@ -165,8 +169,8 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 5
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_AngularSpeed: 180
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
