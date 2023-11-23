@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
         roundManager.EnemyKilled += UpdateEnemiesLeftUI;
         roundManager.EnemySpawned += UpdateEnemiesLeftUI;
 
+        
+
     }
 
     //this needs to be cleaned up - more concise design
@@ -29,14 +31,14 @@ public class UIManager : MonoBehaviour
     {
         UpdateEnemiesLeftUI();
         UpdateRoundNumberUI();
-        StartCoroutine(UpdateStatusDisplayUI("Round Start"));
+        StartCoroutine(UpdateStatusDisplayUI("Night " + roundManager.roundCounter));
     }
 
     public void RoundEndDisplay()
     {
         UpdateEnemiesLeftUI();
         UpdateRoundNumberUI();
-        StartCoroutine(UpdateStatusDisplayUI("Round End"));
+        StartCoroutine(UpdateStatusDisplayUI("Daytime Returns"));
     }
 
     public IEnumerator UpdateStatusDisplayUI(string _text)
@@ -54,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateRoundNumberUI()
     {
-        roundCounter.text = "Round: " + roundManager.roundCounter.ToString();
+        roundCounter.text = "Day: " + roundManager.roundCounter.ToString();
     }
 
     public void UpdateHealthUI(float _health)
