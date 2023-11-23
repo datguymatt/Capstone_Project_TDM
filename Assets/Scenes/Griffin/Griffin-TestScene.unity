@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &726801797 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 607449586373765036, guid: a2c118bc07b36374c8694526872b5b05,
+    type: 3}
+  m_PrefabInstance: {fileID: 3963234144112915692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1681947948
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +239,7 @@ GameObject:
   - component: {fileID: 1706005614}
   - component: {fileID: 1706005613}
   - component: {fileID: 1706005612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,6 +465,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3963234143382450440, guid: a2c118bc07b36374c8694526872b5b05,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3963234143382450447, guid: a2c118bc07b36374c8694526872b5b05,
         type: 3}
       propertyPath: m_TagString
@@ -468,6 +479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963234143761882598, guid: a2c118bc07b36374c8694526872b5b05,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 3963234145192841056, guid: a2c118bc07b36374c8694526872b5b05,
         type: 3}
@@ -482,7 +498,7 @@ PrefabInstance:
     - target: {fileID: 3963234145192841056, guid: a2c118bc07b36374c8694526872b5b05,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.64
+      value: 1.095
       objectReference: {fileID: 0}
     - target: {fileID: 3963234145192841056, guid: a2c118bc07b36374c8694526872b5b05,
         type: 3}
@@ -534,5 +550,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3963234145192841062, guid: a2c118bc07b36374c8694526872b5b05,
+        type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 726801797}
+    - target: {fileID: 3963234145192841062, guid: a2c118bc07b36374c8694526872b5b05,
+        type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3963234143382450441, guid: a2c118bc07b36374c8694526872b5b05, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a2c118bc07b36374c8694526872b5b05, type: 3}

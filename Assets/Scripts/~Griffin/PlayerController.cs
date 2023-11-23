@@ -17,14 +17,19 @@ public class PlayerController : MonoBehaviour, IDamageable
     private float camXRotation;
     private bool invertRotation = true;
 
-    // Movement & physics
-
+    [Header("Movement & physics")]
     [SerializeField] private float movementSpeed = 5f;
     private float moveMultiplier;
     [SerializeField] private float sprintMultiplier = 3f;
     [SerializeField] private float turnSpeed = 3f;
     [SerializeField] private float gravity = -10f;
     private Vector3 playerVelocity;
+    [SerializeField] private float jumpVelocity = 20f;
+
+    [Header("Ground Check")]
+    [SerializeField] private Transform groundCheck;
+    private float groundCheckDistance = 0.4f;
+    [SerializeField] private LayerMask groundMask;
 
     private void Start()
     {
@@ -40,6 +45,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Move();
         RotatePlayer();
         ApplyGravity();
+        Jump();
     }
 
     private void GatherInput()
@@ -54,29 +60,38 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Move()
     {
+        Vector3 baseDirection = new Vector3(0, 0, 0);
+        Vector3 moveDirection = new Vector3(0, 0, 0);
         // Forward movement
         if (Input.GetKey(KeyCode.W))
         {
-            playerController.Move(transform.forward * movementSpeed * moveMultiplier * Time.deltaTime);
+            moveDirection += transform.forward;
         }
 
         // Backwards movement
         if (Input.GetKey(KeyCode.S))
         {
-            playerController.Move(-transform.forward * movementSpeed * moveMultiplier * Time.deltaTime);
+            moveDirection += -transform.forward;
         }
 
         // Strafe left
         if (Input.GetKey(KeyCode.A))
         {
-            playerController.Move(-transform.right * movementSpeed * moveMultiplier * Time.deltaTime);
+            moveDirection += -transform.right;
         }
 
         // Strafe right
         if (Input.GetKey(KeyCode.D))
         {
-            playerController.Move(transform.right * movementSpeed * moveMultiplier * Time.deltaTime);
+            moveDirection += transform.right;
         }
+
+        baseDirection.x = Mathf.Clamp(baseDirection.x + moveDirection.x, -1, 1);
+        baseDirection.y = Mathf.Clamp(baseDirection.y + moveDirection.y, -1, 1);
+        baseDirection.z = Mathf.Clamp(baseDirection.z + moveDirection.z, -1, 1);
+
+        playerController.Move(baseDirection * movementSpeed * moveMultiplier * Time.deltaTime);
+        //playerController.Move((baseDirection * movementSpeed * moveMultiplier * Time.deltaTime).normalized);
     }
     private void RotatePlayer()
     {
@@ -94,6 +109,19 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         playerVelocity.y += gravity * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
+    }
+
+    private bool GroundCheck()
+    {
+        return Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
+    }
+
+    private void Jump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && GroundCheck())
+        {
+            playerVelocity.y = jumpVelocity;
+        }
     }
 
     public void GetDamage(float damage)
