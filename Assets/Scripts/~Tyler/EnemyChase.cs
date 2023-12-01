@@ -3,6 +3,13 @@ using UnityEngine;
 public class EnemyChase : EnemyState
 {
     private float distance;
+
+    public override string GetClass()
+    {
+        var s = "EnemyChase";
+        return s;
+    }
+
     public override void OnStateEnter(EnemyStateManager manager)
     {
 
@@ -25,7 +32,7 @@ public class EnemyChase : EnemyState
         {
             //Non implemented feature*
             //Check how many vampires are in attack state already if there are too many start circling player and wait to enter attack state otherwise enter attackstate
-            if (false/*enemiesAttacking >= maxEnemiesAttacking*/)
+            if (EnemyStateTracker.Instance.EnemiesInState(manager.attackState.GetClass(), manager.transitionState.GetClass()) >= EnemyStateTracker.Instance.GetMaxAttackingEnemies())
             {
                 manager.ChangeState(manager.circleState);
             }
