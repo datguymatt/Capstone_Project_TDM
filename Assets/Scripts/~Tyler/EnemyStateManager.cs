@@ -60,6 +60,7 @@ public class EnemyStateManager : MonoBehaviour
         Debug.Log($"Exiting{currentState} and Entering {newState}");
         currentState.OnStateExit(this);
         currentState = newState;
+        EnemyStateTracker.Instance.UpdateEnemyState(this.gameObject, newState.GetClass());
         //Enemy State Tracker event call to update this enemies current state to newState
         currentState.OnStateEnter(this);
     }

@@ -5,6 +5,13 @@ public class AttackTransitionState : EnemyState
 {
     private float distance;
     private bool canJumpAttack = true;
+
+    public override string GetClass()
+    {
+        var s = "AttackTransitionState";
+        return s;
+    }
+
     public override void OnStateEnter(EnemyStateManager manager)
     {
         manager.agent.enabled = true;
@@ -43,6 +50,7 @@ public class AttackTransitionState : EnemyState
             }
             else
             {
+                EnemyStateTracker.Instance.enemyLeftAttack.Invoke();
                 manager.ChangeState(manager.circleState);
                 return;
             }

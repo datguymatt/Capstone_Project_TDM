@@ -3,6 +3,13 @@ using UnityEngine;
 public class EnemyFindPlayer : EnemyState
 {
     private float baseSpeed;
+
+    public override string GetClass()
+    {
+        var s = "EnemyFindPlayer";
+        return s;
+    }
+
     public override void OnStateEnter(EnemyStateManager manager)
     {
         baseSpeed = manager.agent.speed;

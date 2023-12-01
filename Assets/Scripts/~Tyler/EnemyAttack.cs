@@ -21,7 +21,7 @@ public class EnemyAttack : EnemyState
 
     public override void OnStateExit(EnemyStateManager manager)
     {
-        Debug.Log("Exiting Attack");
+
     }
 
     public override void OnStateUpdate(EnemyStateManager manager)
@@ -42,8 +42,8 @@ public class EnemyAttack : EnemyState
 
         //SetTrigger for jump animation to start
         //Channeling attack
-        Debug.Log("Enemy About To Jump");
-        yield return new WaitForSeconds(0.25f);
+        //Debug.Log("Enemy About To Jump");
+        yield return new WaitForSeconds(0.5f);
 
         Vector3 target = new Vector3(player.position.x, startingPosition.y, player.position.z);
         for (float time = 0; time < 1; time += Time.deltaTime * manager.jumpAttackSpeed)
@@ -54,7 +54,7 @@ public class EnemyAttack : EnemyState
         }
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[1], manager.attackDamage, isAttacking));
         yield return new WaitForSeconds(1f);
-        Debug.Log("Jump Attack Ended");
+        //Debug.Log("Jump Attack Ended");
         //SetTrigger for attack animation to end
 
         manager.agent.enabled = true;
@@ -74,7 +74,7 @@ public class EnemyAttack : EnemyState
         isAttacking = true;
         manager.agent.isStopped = true;
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[0], manager.attackDamage, isAttacking));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         manager.agent.isStopped = false;
         isAttacking = false;
         yield return new WaitForSeconds(cooldown);
@@ -99,8 +99,14 @@ public class EnemyAttack : EnemyState
             }
             yield return null;
         }
-        Debug.Log("Attack ended");
+        //Debug.Log("Attack ended");
         col.enabled = false;
         yield return null;
+    }
+
+    public override string GetClass()
+    {
+        var s = "EnemyAttack";
+        return s;
     }
 }
