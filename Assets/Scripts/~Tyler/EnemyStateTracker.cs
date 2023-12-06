@@ -18,7 +18,7 @@ public class EnemyStateTracker : MonoBehaviour
     }
 
 
-    public UnityEvent enemyLeftAttack;
+    [HideInInspector] public UnityEvent enemyLeftAttack;
 
     private Dictionary<GameObject, string> enemyStates = new Dictionary<GameObject, string>();
     [SerializeField] private int maxAttackingEnemies;
