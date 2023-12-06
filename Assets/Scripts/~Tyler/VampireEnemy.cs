@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class VampireEnemy : Enemy
@@ -13,5 +10,17 @@ public class VampireEnemy : Enemy
     public override void Die(string name)
     {
         base.Die(name);
+        Destroy(this);
+        //implement an enemy die event to tell managers an enemy died and to tell statemanager to exit state
+    }
+    public override void GetDamage(float damage)
+    {
+        Debug.Log($"{this.name} took {damage} damage");
+        this.health.TakeDamage(damage);
+
+        if (this.health.GetHealth() <= 0f)
+        {
+            Die(name);
+        }
     }
 }
