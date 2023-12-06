@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 2072873772619624534}
   - component: {fileID: 329646833033735094}
   - component: {fileID: 329646833033735093}
+  - component: {fileID: 4153076001982637812}
   m_Layer: 0
   m_Name: Enemy_Prefab.01
   m_TagString: Enemy
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  maxHealth: 20
+  maxHealth: 1
 --- !u!114 &329646833033735094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +179,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &4153076001982637812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329646833033735092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7518469, y: 2.1111722, z: 0.34513068}
+  m_Center: {x: -0.01911074, y: 1.0574822, z: 0.030703247}
 --- !u!1 &329646833504785122
 GameObject:
   m_ObjectHideFlags: 0

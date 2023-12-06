@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
     private GameObject player;
-    private float playerDamage;
+    [SerializeField] private float playerDamage;
     private GameObject projectile;
 
     private void Start()
@@ -15,11 +13,15 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<IDamageable>().GetDamage(playerDamage);
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.GetDamage(playerDamage);
+            }
         }
-        else if(!collision.gameObject.CompareTag("Player"))
+        else if (!collision.gameObject.CompareTag("Player"))
         {
             var projectileRb = projectile.GetComponent<Rigidbody>();
             projectileRb.freezeRotation = true;

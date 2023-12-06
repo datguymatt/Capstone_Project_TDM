@@ -11,8 +11,8 @@ public class PlayerShoot : Player
     private float fireTimer; // This is for keeping track of time between shots, acts as a simple timer
     [SerializeField] private float shootForce = 1000f;
 
-    
-    
+
+
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class PlayerShoot : Player
         fireTimer = Mathf.Clamp(fireTimer - (1 * Time.deltaTime), 0, fireDelay);
 
         // Shoot funcionality
-        if(Input.GetMouseButton(0) && fireTimer == 0)
+        if (Input.GetMouseButton(0) && fireTimer == 0)
         {
             // Gather playerHeadTransform for rotation base
             var playerHeadTransform = shootPoint.GetComponentInParent<Transform>();
@@ -47,7 +47,7 @@ public class PlayerShoot : Player
             // reset fire delay
             fireTimer = fireDelay;
             audioManager.PlaySFXAudio("flagpole-bump");
-            
+
         }
     }
 }
