@@ -11,6 +11,9 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI statusMessage;
     public GameObject settingsMenu;
 
+    //state
+
+
     void Start()
     {
         
@@ -25,7 +28,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("Escape"))
+        if (Input.GetKey("escape"))
         {
             Application.Quit();
         }
