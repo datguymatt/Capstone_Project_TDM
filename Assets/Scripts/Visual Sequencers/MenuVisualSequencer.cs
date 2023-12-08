@@ -1,9 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-using System.Collections;
 using TMPro;
-using UnityEngine;
 public class MenuVisualSequencer : MonoBehaviour
 {
 
@@ -70,12 +68,13 @@ public class MenuVisualSequencer : MonoBehaviour
     //start game
     public void StartGameIntro()
     {
-        StartCoroutine(StartIntroSeq());
+        StartCoroutine(StartGameSeq());
     }   
 
     private IEnumerator StartGameSeq()
     {
         yield return new WaitForSeconds(startGameSeqDuration);
+        _menuManager.LoadGame();
     }
 
 }

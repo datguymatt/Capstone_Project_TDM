@@ -31,7 +31,7 @@ public class MenuManager : MonoBehaviour
 
 
 
-    void Awake()
+    void Start()
     {
         if (_instance != null)
         {
