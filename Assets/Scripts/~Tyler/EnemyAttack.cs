@@ -92,7 +92,14 @@ public class EnemyAttack : EnemyState
                 if (c.CompareTag("Player"))
                 {
                     IDamageable damageable = c.GetComponent<IDamageable>();
-                    damageable.GetDamage(damage);
+                    if(damageable != null)
+                    {
+                        damageable.GetDamage(damage);
+                    }
+                    else
+                    {
+                        continue;
+                    }
                     col.enabled = false;
                     yield break;
                 }

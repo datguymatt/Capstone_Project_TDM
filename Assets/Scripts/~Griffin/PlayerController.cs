@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable
+public class PlayerController : MonoBehaviour
 {
     // This is just a simple player controller that I am planning on working on more later. Just the basics to get us ready to test stuff
 
@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Rigidbody playerRigidBody;
     private CharacterController playerController;
     private Transform playerHead;
+    private Interactor interactor;
 
     // Input Variables
     private float horizontalInput;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         playerRigidBody = GetComponent<Rigidbody>();
         playerController = GetComponent<CharacterController>();
         playerHead = GameObject.Find("PlayerHead").transform;
+        interactor = GetComponent<Interactor>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         RotatePlayer();
         ApplyGravity();
         Jump();
+        Interact();
     }
 
     private void GatherInput()
@@ -124,8 +127,19 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
-    public void GetDamage(float damage)
+    public void Interact()
     {
-        Debug.Log($"The player took '{damage}' damage");
+        if(interactor.isHitting)
+        {
+            IInteractable interactable = interactor.hit.collider.GetComponent<IInteractable>();
+
+            if(interactable != null)
+            {
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    interactable.Interact();
+                }
+            }
+        }
     }
 }

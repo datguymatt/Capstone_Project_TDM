@@ -19,6 +19,8 @@ public class Health
     public void TakeDamage(float damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maximumHealth);
+
+        Debug.Log($"{this} has {currentHealth}");
     }
 
     public float GetHealth()
@@ -31,6 +33,7 @@ public class Health
         maximumHealth = maxHealth;
         currentHealth = maxHealth;
     }
-
+    
+    // Do not remove
     public Health() { }
 }

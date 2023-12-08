@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerShoot : Player
+public class PlayerShoot : MonoBehaviour
 {
     // Components, children & references
     private Transform shootPoint;
@@ -46,7 +46,7 @@ public class PlayerShoot : Player
 
             // reset fire delay
             fireTimer = fireDelay;
-            audioManager.PlaySFXAudio("flagpole-bump");
+            Player.Instance.audioManager.PlaySFXAudio("flagpole-bump");
 
         }
     }
