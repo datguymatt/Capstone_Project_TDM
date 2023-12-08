@@ -2,43 +2,81 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    // instance singleton
+    public static MenuManager _instance;
+
     //UI
     public TextMeshProUGUI statusMessage;
-    public GameObject settingsMenu;
 
     //state
+    //intro is supposed to be night turning into daytime, starts with that
+    public bool isIntro = true;
+    //after intro, starts the 'press any key to proceed' sequence, which is day time until a key is pressed, where it transitions to dusk
+    public bool anyKeyClicked = false;
+    //after clicked, it's dusk
+
+    //state events
+    public Action IntroStarted;
+    public Action AnyButtonPrompt;
+    public Action AnyButtonClicked;
+    public Action StartGameClicked;
 
 
-    void Start()
+
+    void Awake()
     {
-        
-        DisplayLoad();
-    }
-
-    public void DisplayLoad()
-    {
-        
+        if (_instance != null)
+        {
+            Debug.LogError("Already an instance of " + this.gameObject.name);
+        }
+        else
+        {
+            _instance = new MenuManager();
+        }
+        IntroStarted?.Invoke();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("escape"))
+        if (Input.GetKey("escape") && !isIntro)
         {
-            Application.Quit();
+            ExitGame();
+        }
+        if (Input.anyKey && !isIntro && !anyKeyClicked)
+        {
+            anyKeyClicked = true;
+            //queue subscribers to event
+            AnyButtonClicked?.Invoke();
         }
     }
-
-    public void StartGame()
+    //this is called by the visual sequencer when it's intro is finished
+    public void StartAnyButtonPrompt()
     {
-        //SceneManager.LoadScene(1);
+        //set state
+        isIntro = false;
+        //kick off the 'press any key to proceed' visual sequencer
+        AnyButtonPrompt?.Invoke();
     }
 
+    //start game section
+    public void StartGame()
+    {
+        //queue subscribers to event
+        StartGameClicked?.Invoke();
+    }
+
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+    //Exit game if button 
     public void ExitGame()
     {
         Application.Quit();
