@@ -13,6 +13,8 @@ public class MenuManager : MonoBehaviour
 
     //UI
     public TextMeshProUGUI statusMessage;
+    public GameObject pressAnyKeyUI;
+    
 
     //state
     //intro is supposed to be night turning into daytime, starts with that
@@ -52,6 +54,8 @@ public class MenuManager : MonoBehaviour
         if (Input.anyKey && !isIntro && !anyKeyClicked)
         {
             anyKeyClicked = true;
+            pressAnyKeyUI.SetActive(false);
+            
             //queue subscribers to event
             AnyButtonClicked?.Invoke();
         }
@@ -59,10 +63,13 @@ public class MenuManager : MonoBehaviour
     //this is called by the visual sequencer when it's intro is finished
     public void StartAnyButtonPrompt()
     {
+        //activate that text
+        pressAnyKeyUI.SetActive(true);
         //set state
         isIntro = false;
         //kick off the 'press any key to proceed' visual sequencer
         AnyButtonPrompt?.Invoke();
+        
     }
 
     //start game section
