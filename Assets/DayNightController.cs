@@ -19,14 +19,6 @@ public class DayNightController : MonoBehaviour
         roundManager.RoundEnd += StartDayCycle;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //in it's simplest form, this will get it to daytime
-        
-        
-    }
-
     public void StartNightCycle()
     {
         //on RoundStart event, do this:

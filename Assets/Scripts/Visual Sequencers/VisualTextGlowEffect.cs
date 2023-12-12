@@ -20,7 +20,7 @@ public class VisualTextGlowEffect : MonoBehaviour
 
     public void FadeIn()
     {
-        DOTween.To(() => _textMeshPro.alpha, x => _textMeshPro.alpha = x, 1, 5).SetEase(Ease.InSine);
+        DOTween.To(() => _textMeshPro.alpha, x => _textMeshPro.alpha = x, 1, 4).SetEase(Ease.InSine);
 
     }
     public void GlowUp()
