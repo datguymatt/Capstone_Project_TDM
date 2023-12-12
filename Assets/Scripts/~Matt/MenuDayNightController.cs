@@ -36,14 +36,16 @@ public class MenuDayNightController : MonoBehaviour
         transform.DORotateQuaternion(new Quaternion(0.558965564f, -0.424670637f, 0.604867339f, -0.375962704f), time);
     }
 
-    public void SwitchToDuskTime()
+    public void SwitchToDuskTime(float time)
     {
-        transform.DORotateQuaternion(new Quaternion(0.434261024f, 0.555342317f, 0.487651318f, 0.514983892f), switchToDuskDuration).OnComplete(SwitchToNightTime); 
+        //Quaternion(-0.06835825,0.534569681,0.00846953783,0.842312753)
+        //transform.DORotateQuaternion(new Quaternion(0.434261024f, 0.555342317f, 0.487651318f, 0.514983892f), time).SetEase(Ease.InOutSine);
+        transform.DORotateQuaternion(new Quaternion(-0.06835825f, 0.534569681f, 0.00846953783f, 0.842312753f), time).SetEase(Ease.InOutSine);
     }
 
-    public void SwitchToNightTime()
+    public void SwitchToNightTime(float time)
     {
-        transform.DORotateQuaternion(new Quaternion(0.484917283f, 0.384504378f, 0.7563802f, 0.211897805f), switchToNightDuration);
+        transform.DORotateQuaternion(new Quaternion(0.484917283f, 0.384504378f, 0.7563802f, 0.211897805f), time).SetEase(Ease.InOutSine);
     }
 
 

@@ -11,6 +11,9 @@ public class MenuManager : MonoBehaviour
     // instance singleton
     public static MenuManager _instance;
 
+    //audio manager
+    public AudioManager audioManager;
+
     //UI
     public TextMeshProUGUI statusMessage;
     public GameObject pressAnyKeyUI;
@@ -58,6 +61,9 @@ public class MenuManager : MonoBehaviour
             
             //queue subscribers to event
             AnyButtonClicked?.Invoke();
+            //PLAYSOUND
+            audioManager.PlaySFXAudio("vampire-laugh");
+            audioManager.PlaySFXAudio("click-ghosts");
         }
     }
     //this is called by the visual sequencer when it's intro is finished
@@ -75,6 +81,7 @@ public class MenuManager : MonoBehaviour
     //start game section
     public void StartGame()
     {
+        audioManager.PlaySFXAudio("start-ghosts");
         //queue subscribers to event
         StartGameClicked?.Invoke();
     }

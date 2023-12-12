@@ -37645,14 +37645,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787985614}
-  m_LocalRotation: {x: 0.31617963, y: -0.5319972, z: -0.31117588, w: 0.7212344}
+  m_LocalRotation: {x: 0.20947812, y: -0.5823306, z: -0.44238886, w: 0.6490779}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 7.18, y: -76.357, z: -52.324}
+  m_LocalEulerAnglesHint: {x: -14.081, y: -76.038, z: -57.523}
 --- !u!114 &1787985617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37685,7 +37685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61365daba6f4fc4584909d236f55af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundManager: {fileID: 1602957640}
   switchToDuskDuration: 8
   switchToNightDuration: 8
   switchToDayDuration: 8

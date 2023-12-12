@@ -16,6 +16,7 @@ public class MenuVisualSequencer : MonoBehaviour
     //ui elements
     public GameObject afterClickUI;
 
+
     [Header("Credit Intro Variables")]
     public Transform tdmCredit;
     public Transform nameCredit;
@@ -92,6 +93,7 @@ public class MenuVisualSequencer : MonoBehaviour
     {
         yield return new WaitForSeconds(anyButtonClickedSeqDuration);
         afterClickUI.SetActive(true);
+        _menuDayNightController.SwitchToDuskTime(10f);
     }
     //end anybutton
 
@@ -103,6 +105,7 @@ public class MenuVisualSequencer : MonoBehaviour
 
     private IEnumerator StartGameSeq()
     {
+        _menuDayNightController.SwitchToNightTime(startGameSeqDuration);
         yield return new WaitForSeconds(startGameSeqDuration);
         _menuManager.LoadGame();
     }

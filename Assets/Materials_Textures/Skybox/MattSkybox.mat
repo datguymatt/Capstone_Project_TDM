@@ -106,9 +106,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HorizonBlend: 50
+    - _HorizonBlend: 37.9
     - _Metallic: 0
-    - _NadirBlend: 0.01
+    - _NadirBlend: 1.4
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -118,18 +118,18 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StarHeight: 2371.5
-    - _StarPower: 28.9
+    - _StarHeight: 2683.5
+    - _StarPower: 30.68
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _ZenithBlend: 0.3
+    - _ZenithBlend: 5.8
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.36862746, g: 0.34901962, b: 0.34117648, a: 1}
-    - _HorizonColor: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 0}
-    - _SkyColor: {r: 0.7092827, g: 0.7827357, b: 0.9339623, a: 0}
+    - _HorizonColor: {r: 0.5, g: 0.42844725, b: 0.3042453, a: 1}
+    - _SkyColor: {r: 0.70928264, g: 0.7827357, b: 0.9339623, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
