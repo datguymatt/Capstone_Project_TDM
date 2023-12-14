@@ -8,12 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Fir_08_Cross Snow_Static
-  m_Shader: {fileID: 4800000, guid: 7bd9a74c0a3251f429b6131c73340f07, type: 3}
+  m_Shader: {fileID: 4800000, guid: adce0b63bca75a84e9f786201b7d7b0b, type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _INVERTSNOWMASK_ON
-  - _KEYWORD0_ON
-  - _WINDVERTEXCOLORMAINR_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -25,6 +22,10 @@ Material:
     m_TexEnvs:
     - _BaseColorMap:
         m_Texture: {fileID: 2800000, guid: a8829cf5ef0fc65438aea3fc60c07458, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -48,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9557b17d38981274ba460a93fa2265d3, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -116,19 +117,28 @@ Material:
     - _AO: 1
     - _AORemapMax: 1
     - _AORemapMin: 0
+    - _AlphaClip: 0
     - _AlphaCutOut: 0.5
     - _AlphaCutoff: 0.65
+    - _AlphaDrag: 0
     - _AmbientOcclusionPower: 1
+    - _Blend: 0
     - _Brightness: 4.79
     - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
     - _ColorNoiseSpread: 2
+    - _Cull: 2
     - _CullFarDistance: 20
     - _CullFarStart: 60
     - _Cutoff: 0.5
+    - _DISTANCEBLEND: 0
+    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DistanceBlend: 0
     - _Drag: 0.3
     - _DstBlend: 0
+    - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
@@ -146,9 +156,11 @@ Material:
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
     - _ShiverDirectionality: 0
     - _ShiverDrag: 0
     - _Smooothness: 0.06
+    - _Smoothness: 0.5
     - _SmoothnessRemapMax: 0.1
     - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 0
@@ -161,6 +173,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Stiffness: 1
+    - _Surface: 0
+    - _TouchReactActive: 0
     - _TransAmbient: 0
     - _TransDirect: 0.258
     - _TransNormalDistortion: 1
@@ -168,6 +182,7 @@ Material:
     - _TransShadow: 1
     - _Translucency: 0
     - _UVSec: 0
+    - _WINDCOLORMIX: 0
     - _WindColorMix: 0
     - _WindColorThreshold: 1
     - _WindNoisePower: 0
@@ -177,10 +192,12 @@ Material:
     - _WindPowerDirectionZ: 0.3
     - _WindVertexColorMainR: 1
     - _WindVertexColorMainRNoiseB: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - NewNormal: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAdjustment: {r: 1.15, g: 1.15, b: 1.2, a: 0}
     - _DryColor: {r: 0.59260416, g: 0.6088095, b: 0.6509434, a: 1}

@@ -2,14 +2,15 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Fir_Leaves Snow Static
   m_Shader: {fileID: 4800000, guid: adce0b63bca75a84e9f786201b7d7b0b, type: 3}
-  m_ShaderKeywords: _WINDVERTEXCOLORMAINRNOISEB_ON
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -35,6 +36,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 756ffff443dff904e9b583b0bc370e69, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 307bf4af402c5674e993cb258ec621e5, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -56,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 756ffff443dff904e9b583b0bc370e69, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -99,6 +104,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 23e30061fac096746b2e1fef681c6e6a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularRGBSmoothnessA:
         m_Texture: {fileID: 2800000, guid: f39f6bc6ea266c048be3fb238b793654, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -129,21 +138,29 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AO: 1
     - _AORemapMax: 1
     - _AORemapMin: 0
+    - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaDrag: 0
     - _AmbientOcclusionPower: 1
+    - _Blend: 0
     - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
     - _ColorNoiseSpread: 2
+    - _Cull: 2
     - _CullFarDistance: 20
     - _CullFarStart: 60
     - _Cutoff: 0.4
     - _DISTANCEBLEND: 0
+    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DistanceBlend: 0
     - _Drag: 0.3
     - _DstBlend: 0
+    - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -162,8 +179,11 @@ Material:
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
     - _ShiverDirectionality: 0.5
     - _ShiverDrag: 0.03
+    - _Smooothness: 0.3
+    - _Smoothness: 0.5
     - _SmoothnessPower: 1
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -182,6 +202,8 @@ Material:
     - _SpecularPower: 0
     - _SrcBlend: 1
     - _Stiffness: 1
+    - _Surface: 0
+    - _TouchReactActive: 0
     - _TransAmbient: 1
     - _TransDirect: 1
     - _TransNormalDistortion: 0
@@ -201,15 +223,19 @@ Material:
     - _WindPowerDirectionZ: 0.3
     - _WindPowerDirectionZ1: 0.31
     - _WindVertexColorMainRNoiseB: 1
+    - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
     - _noise1: 1.66
     m_Colors:
-    - _Color: {r: 1, g: 0.9735294, b: 0.9338235, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorAdjustment: {r: 1, g: 1, b: 1, a: 0}
     - _DryColor: {r: 0.64595944, g: 0.6665301, b: 0.7169812, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HealthyColor: {r: 0.6799573, g: 0.71246153, b: 0.754717, a: 1}
     - _NewNormal: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling_and_Offset: {r: 1, g: 1, b: 0, a: 0}
     - _TranslucencyColor: {r: 0.24233305, g: 0.29411688, b: 0.17300963, a: 0}
     - _VertexNormalMultiply: {r: 0, g: 0, b: 0, a: 0}
