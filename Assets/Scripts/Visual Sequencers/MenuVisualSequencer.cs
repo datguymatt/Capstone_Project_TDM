@@ -12,6 +12,8 @@ public class MenuVisualSequencer : MonoBehaviour
 
     //moon intensity
     public Light moonLight;
+    public Material moonMaterial;
+    public Color moonfadedColor;
     //Daynight
     public MenuDayNightController _menuDayNightController;
 
@@ -41,6 +43,7 @@ public class MenuVisualSequencer : MonoBehaviour
         _menuManager.AnyButtonPrompt += AnyButtonPrompt;
         _menuManager.AnyButtonClicked += AnyButtonClicked;
         _menuManager.StartGameClicked += StartGameIntro;
+        moonMaterial.color = Color.white;
 
     }
 
@@ -63,7 +66,8 @@ public class MenuVisualSequencer : MonoBehaviour
         yield return new WaitForSeconds(3);
         tdmCredit.DOScale(new Vector3(0, 0, 0), 2).SetEase(Ease.InQuart);
         yield return new WaitForSeconds(2);
-        moonLight.DOIntensity(0.74f, 3f);
+        moonLight.DOIntensity(1.1f, 3f);
+        moonMaterial.DOColor(moonfadedColor, 7f);
 
         nameCredit.DOScale(new Vector3(1.42999995f, 1.42999995f, 1.42999995f), 3).SetEase(Ease.InQuart);
         yield return new WaitForSeconds(3);
