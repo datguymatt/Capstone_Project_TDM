@@ -162,7 +162,8 @@ MonoBehaviour:
   - {fileID: 933406424}
   sfxOneShotClips:
   - {fileID: 8300000, guid: 2fd62a0c535633a49b572ee5a8474ee9, type: 3}
-  ambienceChannel: {fileID: 301951203}
+  dayAmbience: {fileID: 0}
+  nightAmbience: {fileID: 0}
 --- !u!4 &7479559
 Transform:
   m_ObjectHideFlags: 0

@@ -20557,7 +20557,7 @@ MonoBehaviour:
   roundCounter: 0
   totalRounds: 5
   enemiesLeft: 0
-  dayTimeDuration: 20
+  dayTimeDuration: 25
   enemiesSpawned: 0
   difficultyModifier: 1.3
   roundEnemyStartCount: 1
@@ -45579,10 +45579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd553ca781f8dd34280bca45f34c9e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchToDuskDuration: 10
+  switchToDuskDuration: 5
   switchToNightDuration: 10
-  switchToDayDuration: 10
-  moonMaterial: {fileID: 0}
+  switchToDayDuration: 15
+  moonMaterial: {fileID: 2100000, guid: 4eb4a1892272cb143a4a77ad6fba435a, type: 2}
   moonfadedColor: {r: 1, g: 1, b: 1, a: 0.29803923}
 --- !u!1 &1799881183
 GameObject:
