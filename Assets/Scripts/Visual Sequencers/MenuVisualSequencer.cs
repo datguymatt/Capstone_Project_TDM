@@ -59,7 +59,7 @@ public class MenuVisualSequencer : MonoBehaviour
         //1- lighting + Camera start to move down and rotate
         //camera start - Vector3(1438, 729, 119.400002)
         //camera end - Vector3(49,9,94)
-        mainCamera.transform.DOMove(new Vector3(49, 9, 94), introSeqDuration).SetEase(Ease.InOutSine);
+        mainCamera.transform.DOMove(new Vector3(49, -0.610000014f, 94), introSeqDuration).SetEase(Ease.InOutSine);
         _menuDayNightController.SwitchToDayTime(introSeqDuration);
         //2-credit zoom in
         tdmCredit.DOScale(new Vector3(4f, 4f, 4f), 3).SetEase(Ease.InQuart);
