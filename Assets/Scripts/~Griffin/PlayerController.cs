@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         Jump();
         Interact();
+        PauseGame();
     }
 
     private void GatherInput()
@@ -139,6 +140,21 @@ public class PlayerController : MonoBehaviour
                 {
                     interactable.Interact();
                 }
+            }
+        }
+    }
+
+    private void PauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (NewUIManager.Instance.isPaused == false)
+            {
+                NewUIManager.Instance.PauseGame();
+            }
+            else
+            {
+                NewUIManager.Instance.ResumeGame();
             }
         }
     }

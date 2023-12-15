@@ -27,6 +27,10 @@ public class Health
     {
         return currentHealth;
     }
+    public float GetMaxHealth()
+    {
+        return maximumHealth;
+    }
 
     public Health(float maxHealth)
     {

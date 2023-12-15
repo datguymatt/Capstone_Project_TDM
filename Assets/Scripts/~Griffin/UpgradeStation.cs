@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UpgradeStation : MonoBehaviour, IInteractable
 {
-    [Header("Upgrade Type - 0 = Health, 1 = MoveSpeed, 2 = Damage, 3 = Reload, 4 = Shot Upgrade")]
+    [Header("0 = Health, 1 = MoveSpeed, 2 = Damage, 3 = Reload, 4 = Shot Upgrade")]
     [SerializeField] private int upgradeType;
     [SerializeField] private int upgradeCost;
 
