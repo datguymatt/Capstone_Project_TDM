@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  maxHealth: 1
+  roundManager: {fileID: 0}
+  maxHealth: 5
 --- !u!114 &329646833033735094
 MonoBehaviour:
   m_ObjectHideFlags: 0

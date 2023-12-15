@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
  
 public class AudioManager : MonoBehaviour
 {
@@ -18,10 +19,18 @@ public class AudioManager : MonoBehaviour
 
     [Header("Ambience")]
     //Ambience
-    [SerializeField] private AudioSource ambienceChannel;
-
+    public AudioSource dayAmbience;
+    public AudioSource nightAmbience;
     //search
     AudioClip searchResult;
+
+    //subscribing to events
+    private RoundManager roundManager;
+
+    //fade stuff
+    
+    private float maxDayAmbienceVolume;
+    private float maxNightAmbienceVolume; 
 
 
     public static AudioManager _instance;
@@ -36,12 +45,40 @@ public class AudioManager : MonoBehaviour
         {
             _instance = new AudioManager();
         }
-
-        
+        roundManager = FindObjectOfType<RoundManager>();
+        roundManager.RoundStart += FadeToNight;
+        roundManager.RoundEnd += FadeToDay;
+        maxNightAmbienceVolume = nightAmbience.volume;
     }
 
     
+    public void FadeToNight()
+    {
+        if(nightAmbience.playOnAwake)
+        {
+            //no need to fade, it is start of game
+            nightAmbience.playOnAwake = false;
+            //set the current max volume as the default for fading back in
+        }
+        else
+        {
+            nightAmbience.Play();
+            //fade in volume
+            dayAmbience.DOFade(0, 8).OnComplete(dayAmbience.Stop);
+            nightAmbience.DOFade(maxNightAmbienceVolume, 14);
+            
+        }
+        
+    }
+    public void FadeToDay()
+    {
+            dayAmbience.Play();
+            //fade in volume
+            dayAmbience.DOFade(0.5f, 8);
+            nightAmbience.DOFade(0, 8).OnComplete(nightAmbience.Stop);
+            
 
+    }
     public int SelectChannel()
     {
         //will boot out the first channel if it can't find anything

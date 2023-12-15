@@ -14,7 +14,7 @@ public class RoundManager : MonoBehaviour
     public int roundCounter = 0;
     public int totalRounds = 5;
     public int enemiesLeft = 0;
-    public int roundCoolDownTime = 10;
+    public int dayTimeDuration = 10;
     public int enemiesSpawned = 0;
 
     //events
@@ -85,8 +85,16 @@ public class RoundManager : MonoBehaviour
     public IEnumerator NewRoundLoop()
     {
         //start a new round loop of enemy spawns after a cooldown buffer which will get smaller each round
-        yield return new WaitForSeconds(roundCoolDownTime);
-        roundCoolDownTime -= 2;
+        if (roundCounter != 1)
+        {
+            yield return new WaitForSeconds(dayTimeDuration);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+        }
+        
+        // difficulty modifier will change how quick the cooldown lasts  - roundCoolDownTime -= 2;
         //UI listener queues visual signal of start
         RoundStart?.Invoke();
         while (enemiesSpawned < roundEnemyStartCount)

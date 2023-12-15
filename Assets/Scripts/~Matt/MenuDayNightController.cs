@@ -10,7 +10,6 @@ public class MenuDayNightController : MonoBehaviour
     public float switchToNightDuration;
     public float switchToDayDuration;
     
-    // Start is called before the first frame update
     void Awake()
     {
         if (_instance != null)
@@ -21,12 +20,11 @@ public class MenuDayNightController : MonoBehaviour
         {
             _instance = new MenuDayNightController();
         }
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //in it's simplest form, this will get it to daytime
         
         
     }
@@ -45,7 +43,7 @@ public class MenuDayNightController : MonoBehaviour
 
     public void SwitchToNightTime(float time)
     {
-        transform.DORotateQuaternion(new Quaternion(0.484917283f, 0.384504378f, 0.7563802f, 0.211897805f), time).SetEase(Ease.InOutSine);
+        transform.DORotateQuaternion(new Quaternion(0.0632761344f, -0.883777916f, -0.219275698f, 0.408473969f), time).SetEase(Ease.InOutSine);
     }
 
 
