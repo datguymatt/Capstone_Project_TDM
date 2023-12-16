@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
         //subscribe to the onhealthupdated and ondeath actions from the player's Health script
         roundManager.EnemyKilled += UpdateEnemiesLeftUI;
         roundManager.EnemySpawned += UpdateEnemiesLeftUI;
+        roundManager.GameOverEvent += GameOver;
 
         
 
@@ -47,6 +48,7 @@ public class UIManager : MonoBehaviour
         statusDisplay.text = _text;
         yield return new WaitForSeconds(displayMessageTime);
         statusDisplay.gameObject.SetActive(false);
+        StopCoroutine(UpdateStatusDisplayUI("null"));
     }
 
     public void UpdateEnemiesLeftUI()
@@ -63,5 +65,10 @@ public class UIManager : MonoBehaviour
     {
         //these are 
         health.text = "Health: " + _health.ToString();
+    }
+
+    public void GameOver()
+    {
+        StartCoroutine(UpdateStatusDisplayUI("Game Over"));
     }
 }

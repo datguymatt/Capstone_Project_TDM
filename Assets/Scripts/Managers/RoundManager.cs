@@ -22,6 +22,7 @@ public class RoundManager : MonoBehaviour
     public Action RoundEnd;
     public Action EnemyKilled;
     public Action EnemySpawned;
+    public Action GameOverEvent;
 
     //diffulty scaling management
     [Header("Difficulty Scaling")]
@@ -80,6 +81,10 @@ public class RoundManager : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(NewRoundLoop());
         }
+        else
+        {
+            GameOver();
+        }
     }
 
     public IEnumerator NewRoundLoop()
@@ -113,5 +118,10 @@ public class RoundManager : MonoBehaviour
             EnemySpawned?.Invoke();
             var enemy = Instantiate(enemyPrefab, respawnPositions[UnityEngine.Random.Range(0, respawnPositions.Length)].position, respawnPositions[UnityEngine.Random.Range(0, respawnPositions.Length)].rotation);   
         
+    }
+    public void GameOver()
+    {
+        GameOverEvent?.Invoke();
+        //put all the logic that will end the game and start a new sequence
     }
 }
