@@ -19,6 +19,7 @@ public class DayNightController : MonoBehaviour
     public NM_Wind windZone;
 
     public bool stormActive = false;
+    public bool isFirstRound = true;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,6 +30,7 @@ public class DayNightController : MonoBehaviour
         roundManager.RoundEnd += SwitchToDayTime;
 
         moonMaterial.color = Color.white;
+        isFirstRound = true;
     }
 
     public void SwitchToDayTime()
@@ -57,10 +59,12 @@ public class DayNightController : MonoBehaviour
 
     public void SwitchToNightTime()
     {
+        
         transform.DORotateQuaternion(new Quaternion(0.0632761344f, -0.883777916f, -0.219275698f, 0.408473969f), switchToNightDuration).SetEase(Ease.InOutSine);
         moonMaterial.DOColor(Color.white, switchToNightDuration);
-        if (UnityEngine.Random.Range(0, 4) == 3)
+        if (UnityEngine.Random.Range(0, 4) == 3 || isFirstRound)
         {
+            isFirstRound = false;
             DOTween.To(() => windZone.WindSpeed, x => windZone.WindSpeed = x, 70f, 20);
             DOTween.To(() => windZone.Turbulence, x => windZone.Turbulence = x, 0.9f, 20);
             stormActive = true;
