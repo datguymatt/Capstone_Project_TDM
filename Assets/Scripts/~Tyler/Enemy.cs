@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Die(string name)
     {
+        roundManager.KillEnemy();
         Debug.Log($"A {name} has died");
     }
 }

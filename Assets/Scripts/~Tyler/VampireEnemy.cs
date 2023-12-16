@@ -10,7 +10,7 @@ public class VampireEnemy : Enemy
     public override void Die(string name)
     {
         base.Die(name);
-        roundManager.KillEnemy();
+        
         //
         Destroy(this.gameObject);
         //implement an enemy die event to tell managers an enemy died and to tell statemanager to exit state
