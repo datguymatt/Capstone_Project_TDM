@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -31,7 +32,11 @@ public class RoundManager : MonoBehaviour
     public float enemySpawnRate = 5f;
 
     //enemy prefab for spawning
-    public GameObject enemyPrefab; 
+    public GameObject enemyPrefab;
+
+    //public
+    public AudioManager audioManager;
+
     void Awake()
     {
         if (_instance != null)
@@ -43,6 +48,7 @@ public class RoundManager : MonoBehaviour
             _instance = new RoundManager();
         }
         InitializeRound();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     //set methods
@@ -54,6 +60,8 @@ public class RoundManager : MonoBehaviour
         {
             //UI listener queues visual signal of end
             RoundEnd?.Invoke();
+            //FADE SOUND prototype - this should be subscribed to by audiomanager
+            audioManager.musicChannel.DOFade(0, 10);
             //start over with initializing
             InitializeRound();
         }

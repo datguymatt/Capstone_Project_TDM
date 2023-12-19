@@ -2331,7 +2331,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99354637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75.3, y: 0, z: 82}
+  m_LocalPosition: {x: -75.3, y: -1.7, z: 82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11770,7 +11770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461371290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -189.5, y: 0, z: 32}
+  m_LocalPosition: {x: -189.5, y: -2.22, z: 32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21234,8 +21234,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084222150}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -165.2, y: -1.83, z: -37.79}
+  m_LocalRotation: {x: 0.051787477, y: 0.4274992, z: -0.02446279, w: 0.9021995}
+  m_LocalPosition: {x: -27.97, y: -0.32137334, z: 79.99194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22000,7 +22000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240519131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 33.5}
+  m_LocalPosition: {x: 0, y: 0, z: 32.719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25588,16 +25588,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPositions:
   - {fileID: 2009871413}
+  - {fileID: 99354638}
+  - {fileID: 1084222151}
+  - {fileID: 461371291}
+  - {fileID: 1240519132}
   roundCounter: 0
   totalRounds: 4
   enemiesLeft: 0
   dayTimeDuration: 25
   enemiesSpawned: 0
   difficultyModifier: 1.3
-  roundEnemyStartCount: 1
-  enemySpawnRate: 3
+  roundEnemyStartCount: 4
+  enemySpawnRate: 5
   enemyPrefab: {fileID: 329646833033735092, guid: 8ef654978d8ad10419c6d2da6280ef82,
     type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &1602957641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56832,11 +56837,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6234226335108516006, guid: fe5cbdff723a0e943947214fc031f416,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 704ce63529edf314689d6ac096e8a8e5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.537
+  m_Volume: 0.455
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

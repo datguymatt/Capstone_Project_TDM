@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Music")]
     //channels
-    [SerializeField] private AudioSource musicChannel;
+    public AudioSource musicChannel;
     [SerializeField] private AudioClip[] musicClips;
 
     [Header("SFX Oneshots")]
