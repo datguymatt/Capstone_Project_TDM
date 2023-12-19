@@ -57011,6 +57011,8 @@ MonoBehaviour:
   - {fileID: 321193716}
   sfxOneShotClips:
   - {fileID: 8300000, guid: 2fd62a0c535633a49b572ee5a8474ee9, type: 3}
+  - {fileID: 8300000, guid: 8c15acb53b7bb554790b183a7e144e41, type: 3}
+  - {fileID: 8300000, guid: ddb657c1ccf3ac946b472d35ae158ec7, type: 3}
   dayAmbience: {fileID: 1369903072}
   nightAmbience: {fileID: 951335453}
 --- !u!4 &4040828765349318764

@@ -5,10 +5,12 @@ public class PlayerProjectile : MonoBehaviour
     private GameObject player;
     [SerializeField] private float playerDamage;
     private GameObject projectile;
-
     private void Start()
     {
         projectile = this.gameObject;
+    }
+    private void Awake()
+    {
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -19,6 +21,8 @@ public class PlayerProjectile : MonoBehaviour
             if (damageable != null)
             {
                 damageable.GetDamage(playerDamage);
+                //play hit sound
+                
             }
         }
         else if (!collision.gameObject.CompareTag("Player"))
@@ -28,5 +32,6 @@ public class PlayerProjectile : MonoBehaviour
             projectileRb.isKinematic = true;
             //projectile.transform.SetParent(collision.transform);
         }
+        GetComponent<AudioSource>().Play();
     }
 }
