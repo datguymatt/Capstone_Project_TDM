@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 32361784}
   - component: {fileID: 32361786}
   - component: {fileID: 32361785}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106800
+  m_Name: pb_Mesh32500
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 58916487}
   - component: {fileID: 58916486}
   - component: {fileID: 58916485}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: sidewalk-entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2005,7 +2005,7 @@ GameObject:
   - component: {fileID: 80985293}
   - component: {fileID: 80985292}
   - component: {fileID: 80985291}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2429,7 +2429,7 @@ GameObject:
   - component: {fileID: 113988007}
   - component: {fileID: 113988006}
   - component: {fileID: 113988005}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Window Frame (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3295,7 +3295,7 @@ GameObject:
   - component: {fileID: 158975972}
   - component: {fileID: 158975971}
   - component: {fileID: 158975970}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: SurfCylinder
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3508,7 +3508,7 @@ GameObject:
   - component: {fileID: 224608354}
   - component: {fileID: 224608353}
   - component: {fileID: 224608352}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3605,7 +3605,7 @@ GameObject:
   - component: {fileID: 225164415}
   - component: {fileID: 225164414}
   - component: {fileID: 225164413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2nd-floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4029,7 +4029,7 @@ GameObject:
   - component: {fileID: 239292719}
   - component: {fileID: 239292718}
   - component: {fileID: 239292717}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4188,7 +4188,7 @@ GameObject:
   - component: {fileID: 245925735}
   - component: {fileID: 245925734}
   - component: {fileID: 245925733}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4279,7 +4279,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106580
+  m_Name: pb_Mesh32264
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4449,7 +4449,7 @@ GameObject:
   - component: {fileID: 279152237}
   - component: {fileID: 279152236}
   - component: {fileID: 279152235}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Floor Plane
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4707,7 +4707,7 @@ GameObject:
   - component: {fileID: 343791525}
   - component: {fileID: 343791524}
   - component: {fileID: 343791523}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4803,7 +4803,7 @@ GameObject:
   - component: {fileID: 365984120}
   - component: {fileID: 365984122}
   - component: {fileID: 365984121}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain_(-3225.00, -135.00, 87.00)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4883,7 +4883,7 @@ GameObject:
   - component: {fileID: 375876924}
   - component: {fileID: 375876923}
   - component: {fileID: 375876922}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: stairplatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5252,6 +5252,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3963234145192841062, guid: a2c118bc07b36374c8694526872b5b05,
+        type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 136
+      objectReference: {fileID: 0}
     - target: {fileID: 5626021702169809879, guid: a2c118bc07b36374c8694526872b5b05,
         type: 3}
       propertyPath: shootForce
@@ -5271,7 +5276,7 @@ GameObject:
   - component: {fileID: 382920852}
   - component: {fileID: 382920851}
   - component: {fileID: 382920850}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube.001 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5938,7 +5943,7 @@ GameObject:
   - component: {fileID: 448391828}
   - component: {fileID: 448391827}
   - component: {fileID: 448391826}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Window Frame (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6523,7 +6528,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106410
+  m_Name: pb_Mesh32094
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6695,7 +6700,7 @@ GameObject:
   - component: {fileID: 456017276}
   - component: {fileID: 456017275}
   - component: {fileID: 456017274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11781,7 +11786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 472623377}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: house-v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11838,7 +11843,7 @@ GameObject:
   - component: {fileID: 482266477}
   - component: {fileID: 482266476}
   - component: {fileID: 482266475}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12071,7 +12076,7 @@ GameObject:
   - component: {fileID: 514601465}
   - component: {fileID: 514601464}
   - component: {fileID: 514601463}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: SurfCylinder
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -12166,7 +12171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 529407523}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SidewalkChunk (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12200,7 +12205,7 @@ GameObject:
   - component: {fileID: 562088766}
   - component: {fileID: 562088765}
   - component: {fileID: 562088764}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12297,7 +12302,7 @@ GameObject:
   - component: {fileID: 593552250}
   - component: {fileID: 593552249}
   - component: {fileID: 593552248}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12392,7 +12397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600840162}
   - component: {fileID: 600840163}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TerrainGroup_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12442,7 +12447,7 @@ GameObject:
   - component: {fileID: 608524338}
   - component: {fileID: 608524337}
   - component: {fileID: 608524336}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12744,6 +12749,135 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608524334}
   m_Mesh: {fileID: 2046239675}
+--- !u!1 &614300526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614300527}
+  - component: {fileID: 614300528}
+  m_Layer: 0
+  m_Name: left-right-foot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &614300527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614300526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1445459852}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &614300528
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614300526}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 8556256899608171552, guid: fe5cbdff723a0e943947214fc031f416,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.445
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &631786134
 GameObject:
   m_ObjectHideFlags: 0
@@ -12755,7 +12889,7 @@ GameObject:
   - component: {fileID: 631786135}
   - component: {fileID: 631786137}
   - component: {fileID: 631786136}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Exterior Wide Wall.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12836,7 +12970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 642634373}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: outer-sidewalk
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -12865,7 +12999,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106928
+  m_Name: pb_Mesh32630
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13029,7 +13163,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106736
+  m_Name: pb_Mesh32436
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13193,7 +13327,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106698
+  m_Name: pb_Mesh32390
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13361,7 +13495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660456014}
   - component: {fileID: 660456015}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Staircase
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -13420,7 +13554,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106386
+  m_Name: pb_Mesh32070
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13591,7 +13725,7 @@ GameObject:
   - component: {fileID: 696605288}
   - component: {fileID: 696605287}
   - component: {fileID: 696605286}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13902,7 +14036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 699515779}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13938,7 +14072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 739813866}
   - component: {fileID: 739813867}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ReverbZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14026,7 +14160,7 @@ GameObject:
   - component: {fileID: 774783410}
   - component: {fileID: 774783412}
   - component: {fileID: 774783411}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BrokenBranch (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14139,7 +14273,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh107022
+  m_Name: pb_Mesh32724
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14439,7 +14573,7 @@ GameObject:
   - component: {fileID: 835087001}
   - component: {fileID: 835087000}
   - component: {fileID: 835086999}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tv side mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14747,7 +14881,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106544
+  m_Name: pb_Mesh32228
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14966,7 +15100,7 @@ GameObject:
   - component: {fileID: 855836435}
   - component: {fileID: 855836434}
   - component: {fileID: 855836433}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15063,7 +15197,7 @@ GameObject:
   - component: {fileID: 858677152}
   - component: {fileID: 858677151}
   - component: {fileID: 858677150}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Window Panes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15248,7 +15382,7 @@ GameObject:
   - component: {fileID: 925951616}
   - component: {fileID: 925951615}
   - component: {fileID: 925951614}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20326,7 +20460,7 @@ GameObject:
   - component: {fileID: 985116067}
   - component: {fileID: 985116069}
   - component: {fileID: 985116068}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20411,7 +20545,7 @@ GameObject:
   - component: {fileID: 999885771}
   - component: {fileID: 999885770}
   - component: {fileID: 999885769}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20725,7 +20859,7 @@ GameObject:
   - component: {fileID: 1024515524}
   - component: {fileID: 1024515523}
   - component: {fileID: 1024515522}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20868,7 +21002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1043615737}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Map Layout
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -20973,7 +21107,7 @@ GameObject:
   - component: {fileID: 1081832058}
   - component: {fileID: 1081832060}
   - component: {fileID: 1081832059}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21114,7 +21248,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106458
+  m_Name: pb_Mesh32142
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21281,7 +21415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1097399738}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: road
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -21310,7 +21444,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh107066
+  m_Name: pb_Mesh32768
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21556,7 +21690,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106916
+  m_Name: pb_Mesh32618
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21726,7 +21860,7 @@ GameObject:
   - component: {fileID: 1209956478}
   - component: {fileID: 1209956477}
   - component: {fileID: 1209956476}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21884,7 +22018,7 @@ GameObject:
   - component: {fileID: 1245949794}
   - component: {fileID: 1245949796}
   - component: {fileID: 1245949795}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Exterior Wide Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21962,7 +22096,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106530
+  m_Name: pb_Mesh32214
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22260,7 +22394,7 @@ GameObject:
   - component: {fileID: 1292321580}
   - component: {fileID: 1292321582}
   - component: {fileID: 1292321581}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain_0_0_db165216-ec1e-42fb-b5e0-9cf47bbb47bb
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -22414,7 +22548,7 @@ GameObject:
   - component: {fileID: 1318081481}
   - component: {fileID: 1318081480}
   - component: {fileID: 1318081479}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Cube.001 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22914,7 +23048,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh107118
+  m_Name: pb_Mesh32820
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23085,7 +23219,7 @@ GameObject:
   - component: {fileID: 1338240041}
   - component: {fileID: 1338240040}
   - component: {fileID: 1338240039}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall side mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23576,7 +23710,7 @@ GameObject:
   - component: {fileID: 1370547435}
   - component: {fileID: 1370547437}
   - component: {fileID: 1370547436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23663,7 +23797,7 @@ GameObject:
   - component: {fileID: 1378396894}
   - component: {fileID: 1378396893}
   - component: {fileID: 1378396892}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: videocube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23900,7 +24034,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106986
+  m_Name: pb_Mesh32688
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24168,7 +24302,7 @@ GameObject:
   - component: {fileID: 1422141426}
   - component: {fileID: 1422141425}
   - component: {fileID: 1422141424}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Window Frame (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24316,6 +24450,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422141422}
   m_Mesh: {fileID: 1397514741}
+--- !u!4 &1422295349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 607449586373765036, guid: a2c118bc07b36374c8694526872b5b05,
+    type: 3}
+  m_PrefabInstance: {fileID: 379455644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1445459851
 GameObject:
   m_ObjectHideFlags: 0
@@ -24325,7 +24465,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1445459852}
-  - component: {fileID: 1445459854}
   - component: {fileID: 1445459853}
   m_Layer: 0
   m_Name: FootstepAudioSystem
@@ -24345,107 +24484,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 614300527}
   m_Father: {fileID: 4040828765029184333}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1445459853
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445459851}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &1445459854
+--- !u!114 &1445459853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24454,9 +24498,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445459851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf0dc9ca6cf8f94fbb1950b3b940f27, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f385e84306babc4a833bcbe379eb4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _instance: {fileID: 0}
+  leftRightFootAudioSource: {fileID: 614300528}
+  leftFootstepConc:
+  - {fileID: 8300000, guid: f70e053493f05f4409efe22b2b9ecbcd, type: 3}
+  - {fileID: 8300000, guid: 37ccaedcb5f84e44487eae0c42072604, type: 3}
+  - {fileID: 8300000, guid: 3bb227b98f949ec4383562c8c583ca2e, type: 3}
+  - {fileID: 8300000, guid: 782026bacc645ac48858ec2c9bafca2c, type: 3}
+  - {fileID: 8300000, guid: a868e3b8b519a4e48ba56da1d87c7951, type: 3}
+  rightFootstepConc:
+  - {fileID: 8300000, guid: aca46c6a2e5842549a1045602659da6d, type: 3}
+  - {fileID: 8300000, guid: dd1d1ca06b246c94f9d4cc1e581a9257, type: 3}
+  - {fileID: 8300000, guid: 3adf0aae92aa8fb4e9d13afc15a4dc7b, type: 3}
+  - {fileID: 8300000, guid: 17ba408d6e9ac2149978f1b3f94adc68, type: 3}
+  - {fileID: 8300000, guid: 3a6143f524144994091fe678706676dd, type: 3}
+  leftFootstepGrass:
+  - {fileID: 8300000, guid: 1df32a2ca41ce244e9902616ff654d8f, type: 3}
+  - {fileID: 8300000, guid: 592bb21b74e915342afda95e7852b452, type: 3}
+  - {fileID: 8300000, guid: 9d606e19ee4d4c14da5c0ff2b6724f0a, type: 3}
+  - {fileID: 8300000, guid: 84b7786ad975c3343b4e4d3615430fdb, type: 3}
+  - {fileID: 8300000, guid: 1805312c252218b42b0699d2e60f9ee0, type: 3}
+  rightFootstepGrass:
+  - {fileID: 8300000, guid: 9aca60047a8790c42a30b44d26326d09, type: 3}
+  - {fileID: 8300000, guid: 9ce95558f82cd9d4b87b76c2e650bdc3, type: 3}
+  - {fileID: 8300000, guid: aaeac4505795101498cb4af9c322ee8c, type: 3}
+  - {fileID: 8300000, guid: d88b9da06e6f62849be6f9bca9676756, type: 3}
+  - {fileID: 8300000, guid: 8e659f4cff3d9ed4bae8f462d7150222, type: 3}
+  groundType: 
+  walkSpeed: 0.35
+  sprintMultiply: 0.7
+  isWalking: 0
+  isRunning: 0
+  grassMask:
+    serializedVersion: 2
+    m_Bits: 8
+  concreteMask:
+    serializedVersion: 2
+    m_Bits: 128
+  groundCheck: {fileID: 1422295349}
 --- !u!1 &1448246404
 GameObject:
   m_ObjectHideFlags: 0
@@ -24494,7 +24576,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106766
+  m_Name: pb_Mesh32466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24658,7 +24740,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106554
+  m_Name: pb_Mesh32238
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24828,7 +24910,7 @@ GameObject:
   - component: {fileID: 1502959958}
   - component: {fileID: 1502959957}
   - component: {fileID: 1502959956}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24926,7 +25008,7 @@ GameObject:
   - component: {fileID: 1530566949}
   - component: {fileID: 1530566948}
   - component: {fileID: 1530566947}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25240,7 +25322,7 @@ GameObject:
   - component: {fileID: 1547598407}
   - component: {fileID: 1547598406}
   - component: {fileID: 1547598405}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25336,7 +25418,7 @@ GameObject:
   - component: {fileID: 1571594364}
   - component: {fileID: 1571594366}
   - component: {fileID: 1571594365}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25417,7 +25499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1578971624}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: inner-sidewalk
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -25548,7 +25630,7 @@ GameObject:
   - component: {fileID: 1647931137}
   - component: {fileID: 1647931136}
   - component: {fileID: 1647931135}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: fountain
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -32915,7 +32997,7 @@ GameObject:
   - component: {fileID: 1649435009}
   - component: {fileID: 1649435008}
   - component: {fileID: 1649435007}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33012,7 +33094,7 @@ GameObject:
   - component: {fileID: 1660100834}
   - component: {fileID: 1660100833}
   - component: {fileID: 1660100832}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33109,7 +33191,7 @@ GameObject:
   - component: {fileID: 1667207078}
   - component: {fileID: 1667207077}
   - component: {fileID: 1667207076}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: 2nd-floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -33344,7 +33426,7 @@ GameObject:
   - component: {fileID: 1722079929}
   - component: {fileID: 1722079928}
   - component: {fileID: 1722079927}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: SurfCylinder
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -49471,7 +49553,7 @@ GameObject:
   - component: {fileID: 1763432440}
   - component: {fileID: 1763432438}
   - component: {fileID: 1763432439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50245,7 +50327,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh107134
+  m_Name: pb_Mesh32836
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -50816,7 +50898,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106776
+  m_Name: pb_Mesh32476
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -51069,7 +51151,7 @@ GameObject:
   - component: {fileID: 1834493235}
   - component: {fileID: 1834493237}
   - component: {fileID: 1834493236}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51154,7 +51236,7 @@ GameObject:
   - component: {fileID: 1870650711}
   - component: {fileID: 1870650710}
   - component: {fileID: 1870650709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: house-dirtplane
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -54244,7 +54326,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106568
+  m_Name: pb_Mesh32252
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -54408,7 +54490,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh107190
+  m_Name: pb_Mesh32894
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -54575,7 +54657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1890131479}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: center-layout
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -54746,7 +54828,7 @@ GameObject:
   - component: {fileID: 1973857501}
   - component: {fileID: 1973857500}
   - component: {fileID: 1973857499}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55101,7 +55183,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106374
+  m_Name: pb_Mesh32058
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -55265,7 +55347,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh106660
+  m_Name: pb_Mesh32352
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -55466,7 +55548,7 @@ GameObject:
   - component: {fileID: 2105802801}
   - component: {fileID: 2105802800}
   - component: {fileID: 2105802799}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Stair (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55825,7 +55907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450653391980337}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: boulder-den-forest-scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56123,7 +56205,7 @@ GameObject:
   - component: {fileID: 4931218026574087406}
   - component: {fileID: 4876933053651828461}
   - component: {fileID: 1305037033568109056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56974,7 +57056,7 @@ GameObject:
   - component: {fileID: 202029832815837380}
   - component: {fileID: 2077248676689934885}
   - component: {fileID: 6965686550174812315}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BrokenBranch.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57664,7 +57746,7 @@ GameObject:
   - component: {fileID: 891453070379708771}
   - component: {fileID: 8163319351374616976}
   - component: {fileID: 1283095396170623899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BrokenBranch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

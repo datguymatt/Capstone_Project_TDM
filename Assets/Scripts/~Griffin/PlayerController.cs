@@ -29,8 +29,17 @@ public class PlayerController : MonoBehaviour
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
-    private float groundCheckDistance = 0.4f;
+    private float groundCheckDistance = 0.2f;
     [SerializeField] private LayerMask groundMask;
+
+    //walking and running sfx
+    public FootstepAudioSystem footstepAudioSystem;
+    public bool walkSoundPlaying = false;
+
+    private void Awake()
+    {
+        footstepAudioSystem = FindObjectOfType<FootstepAudioSystem>();
+    }
 
     private void Start()
     {
@@ -96,6 +105,46 @@ public class PlayerController : MonoBehaviour
 
         playerController.Move(baseDirection * movementSpeed * moveMultiplier * Time.deltaTime);
         //playerController.Move((baseDirection * movementSpeed * moveMultiplier * Time.deltaTime).normalized);
+
+        //trigger the walk sound if not sprinting
+        //trigger the run sound if sprinting
+        if (GroundCheck() && !walkSoundPlaying && baseDirection != new Vector3(0,0,0))
+        {
+            walkSoundPlaying = true;
+            if (moveMultiplier == 1)
+            {
+                footstepAudioSystem.isWalking = true;
+                footstepAudioSystem.isRunning = false;
+                footstepAudioSystem.WalkSoundStart();
+            } 
+            else
+            {
+                footstepAudioSystem.isRunning = true;
+                footstepAudioSystem.isWalking = false;
+                footstepAudioSystem.WalkSoundStart();
+            }
+        }
+        else if(!GroundCheck() || baseDirection == new Vector3(0,0,0))
+        {
+            footstepAudioSystem.isWalking = false;
+            footstepAudioSystem.isRunning = false;
+            footstepAudioSystem.WalkSoundStop();
+            walkSoundPlaying = false;
+        }
+        else
+        {
+            if(moveMultiplier == 1)
+            {
+                footstepAudioSystem.isWalking = true;
+                footstepAudioSystem.isRunning = false;
+            }
+            else
+            {
+                footstepAudioSystem.isRunning = true;
+                footstepAudioSystem.isWalking = false;
+            }
+        }
+        
     }
     private void RotatePlayer()
     {
@@ -114,7 +163,6 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravity * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
     }
-
     private bool GroundCheck()
     {
         return Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);

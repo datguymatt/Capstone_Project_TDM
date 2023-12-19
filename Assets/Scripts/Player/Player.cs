@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamageable
 
     // audio
     public AudioManager audioManager;
+    
 
     private void Awake()
     {

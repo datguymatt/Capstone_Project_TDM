@@ -11,11 +11,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Grass
   - Water
   - UI
   - Interactable
-  - 
+  - Concrete
   - 
   - 
   - 
