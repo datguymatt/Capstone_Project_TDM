@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 1641647295822052516}
   - component: {fileID: 1641647295822052519}
   - component: {fileID: 1641647295822052518}
+  - component: {fileID: 1664577760200608859}
   m_Layer: 5
   m_Name: AudioSettingsCanvas
   m_TagString: Untagged
@@ -293,6 +294,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1664577760200608859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641647295822052513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ff71c23dd506b48aa8c8cda0818e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: fe5cbdff723a0e943947214fc031f416, type: 2}
 --- !u!1 &1641647295838278548
 GameObject:
   m_ObjectHideFlags: 0
