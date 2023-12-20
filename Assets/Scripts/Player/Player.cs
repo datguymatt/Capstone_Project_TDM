@@ -21,6 +21,5 @@ public class Player : MonoBehaviour, IDamageable
     public void GetDamage(float damage)
     {
         playerHealth.TakeDamage(damage);
-        NewUIManager.Instance.UpdateHealth();
     }
 }

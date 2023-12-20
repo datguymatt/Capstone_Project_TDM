@@ -30,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
         fireTimer = Mathf.Clamp(fireTimer - (1 * Time.deltaTime), 0, fireDelay);
 
         // Shoot funcionality
-        if (Input.GetMouseButton(0) && fireTimer == 0)
+        if (Input.GetMouseButton(0) && fireTimer == 0 && PauseMenuManager.Instance.isPaused == false)
         {
             // Gather playerHeadTransform for rotation base
             var playerHeadTransform = shootPoint.GetComponentInParent<Transform>();
