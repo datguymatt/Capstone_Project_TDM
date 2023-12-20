@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
 
         //trigger the walk sound if not sprinting
         //trigger the run sound if sprinting
+        
         if (GroundCheck() && !walkSoundPlaying && baseDirection != new Vector3(0,0,0))
         {
             walkSoundPlaying = true;
@@ -196,13 +197,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (NewUIManager.Instance.isPaused == false)
+            if (PauseMenuManager.Instance.isPaused == false)
             {
-                NewUIManager.Instance.PauseGame();
+                PauseMenuManager.Instance.PauseGame();
             }
             else
             {
-                NewUIManager.Instance.ResumeGame();
+                PauseMenuManager.Instance.ResumeGame();
             }
         }
     }

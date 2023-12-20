@@ -3,28 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewUIManager : MonoBehaviour
+public class PauseMenuManager : MonoBehaviour
 {
     public bool isPaused = false;
-    public static NewUIManager Instance;
-    public Player player;
-    [SerializeField] private Slider healthbar;
+    public static PauseMenuManager Instance;
 
     [SerializeField] private Canvas pauseCanvas;
     [SerializeField] private Canvas settingsCanvas;
+    [SerializeField] private Canvas audioSettingsCanvas;
     
     private void Start()
     {
         if(Instance == null) { Instance = this; }
-
-        player = GameObject.Find("Player").GetComponent<Player>();
-
-        UpdateHealth();
-    }
-
-    public void UpdateHealth()
-    {
-        healthbar.value = player.playerHealth.GetHealth() / player.playerHealth.GetMaxHealth();
     }
 
     public void PauseGame()
@@ -40,6 +30,8 @@ public class NewUIManager : MonoBehaviour
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
         pauseCanvas.gameObject.SetActive(false);
+        settingsCanvas.gameObject.SetActive(false);
+        audioSettingsCanvas.gameObject.SetActive(false);
         isPaused = false;
     }
 
@@ -53,6 +45,18 @@ public class NewUIManager : MonoBehaviour
     {
         pauseCanvas.gameObject.SetActive(true);
         settingsCanvas.gameObject.SetActive(false);
+    }
+
+    public void OpenAudioSettings()
+    {
+        settingsCanvas.gameObject.SetActive(false);
+        audioSettingsCanvas.gameObject.SetActive(true);
+    }
+
+    public void CloseAudioSettings()
+    {
+        audioSettingsCanvas.gameObject.SetActive(false);
+        settingsCanvas.gameObject.SetActive(true);
     }
 
     public void QuitGame()
