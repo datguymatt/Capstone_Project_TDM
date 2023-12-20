@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -5,22 +6,46 @@ public class Player : MonoBehaviour, IDamageable
     public static Player Instance;
 
     // health
-    public Health playerHealth = new Health(2);
+    public Health playerHealth = new Health(10);
 
     // audio
     public AudioManager audioManager;
-    
+    private UIManager uiManager;
+
+    //events
+    public Action DamageTaken;
+    public Action HealthLow;
+    public Action PlayerDead;
+
 
     private void Awake()
     {
+        uiManager = FindObjectOfType<UIManager>();
         if (Instance != null) { Destroy(this); }
         else { Instance = this; }
         audioManager = FindObjectOfType<AudioManager>();
+        uiManager.UpdateHealthUI(playerHealth.GetMaxHealth());
     }
 
     public void GetDamage(float damage)
     {
         playerHealth.TakeDamage(damage);
-        NewUIManager.Instance.UpdateHealth();
+        uiManager.UpdateHealthUI(playerHealth.GetHealth());
+        DamageTaken?.Invoke();
+        if (playerHealth.GetHealth() <= 0)
+        {
+            Die();
+
+        } else if (playerHealth.GetHealth() <= (playerHealth.GetMaxHealth() * 0.20f))
+        { 
+            //health is less than or equal to 20% of maxHealth, signal an event that health is low
+            HealthLow?.Invoke();
+        }
+        
+    }
+
+    public void Die()
+    {
+        PlayerDead?.Invoke();
     }
 }

@@ -35,12 +35,17 @@ public class GameManager : MonoBehaviour
         }
         //initialize player stuff
         _player = GameObject.Find("Player");
-        //initialize a round at the start, after that, rounds only triggered using events
+        //sub to events it will need to hear
+        _player.GetComponent<Player>().PlayerDead += PlayerDead;
     }
 
     public void PlayerRespawn()
     {
-        //use health?.Invoke() to invoke this method when health falls to 0 or below
         _player.transform.position = respawnPositions[Random.Range(0, respawnPositions.Length)].position;
+    }
+
+    public void PlayerDead()
+    {
+        PlayerRespawn();
     }
 }
