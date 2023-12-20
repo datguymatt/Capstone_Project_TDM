@@ -21,6 +21,8 @@ public class DayNightController : MonoBehaviour
     public bool stormActive = false;
     public bool isFirstRound = true;
 
+    public Action DuskStarted;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -52,9 +54,11 @@ public class DayNightController : MonoBehaviour
 
     public void SwitchToDuskTime()
     {
+        DuskStarted?.Invoke();
         //Quaternion(-0.06835825,0.534569681,0.00846953783,0.842312753)
         //transform.DORotateQuaternion(new Quaternion(0.434261024f, 0.555342317f, 0.487651318f, 0.514983892f), time).SetEase(Ease.InOutSine);
         transform.DORotateQuaternion(new Quaternion(-0.06835825f, 0.534569681f, 0.00846953783f, 0.842312753f), switchToDuskDuration).SetEase(Ease.InOutSine);
+        
     }
 
     public void SwitchToNightTime()

@@ -9,7 +9,10 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Music")]
     //channels
-    public AudioSource musicChannel;
+    public AudioSource musicNight;
+    public AudioSource musicDusk;
+    public AudioSource musicDay;
+
     [SerializeField] private AudioClip[] musicClips;
 
     [Header("SFX Oneshots")]
@@ -26,6 +29,7 @@ public class AudioManager : MonoBehaviour
 
     //subscribing to events
     private RoundManager roundManager;
+    private DayNightController dayNightController;
 
     //fade stuff
     
@@ -46,8 +50,10 @@ public class AudioManager : MonoBehaviour
             _instance = new AudioManager();
         }
         roundManager = FindObjectOfType<RoundManager>();
+        dayNightController = FindObjectOfType<DayNightController>();
         roundManager.RoundStart += FadeToNight;
         roundManager.RoundEnd += FadeToDay;
+        dayNightController.DuskStarted += DuskStart;
         maxNightAmbienceVolume = nightAmbience.volume;
     }
 
@@ -58,26 +64,43 @@ public class AudioManager : MonoBehaviour
         {
             //no need to fade, it is start of game
             nightAmbience.playOnAwake = false;
+            NightStart();
             //set the current max volume as the default for fading back in
         }
         else
         {
-            nightAmbience.Play();
-            //fade in volume
-            dayAmbience.DOFade(0, 8).OnComplete(dayAmbience.Stop);
-            nightAmbience.DOFade(maxNightAmbienceVolume, 14);
+            musicDusk.DOFade(0, 5f).OnComplete(musicNight.Play);
+            //fade in volume of ambience, and music
+            dayAmbience.DOFade(0, 5).OnComplete(dayAmbience.Stop);
+            nightAmbience.DOFade(maxNightAmbienceVolume, 14).OnComplete(NightStart);
+            //music
             
         }
         
     }
+
+    public void NightStart()
+    {
+        PlaySFXAudio("night-start");
+    }
     public void FadeToDay()
     {
-            dayAmbience.Play();
-            //fade in volume
-            dayAmbience.DOFade(0.5f, 8);
-            nightAmbience.DOFade(0, 8).OnComplete(nightAmbience.Stop);
+        dayAmbience.Play();
+        musicDay.Play();
+        //fade in volume
+        musicDay.DOFade(0.6f, 6);
+        dayAmbience.DOFade(0.5f, 8);
+        nightAmbience.DOFade(0, 8).OnComplete(nightAmbience.Stop);
+
             
 
+    }
+
+    public void DuskStart()
+    {
+        //fade out day quickly, then dusk countdown starts
+        musicDay.DOFade(0, 4).OnComplete(musicDusk.Play);
+        
     }
     public int SelectChannel()
     {
@@ -163,8 +186,13 @@ public class AudioManager : MonoBehaviour
         {
             if (clipFound.name == clip)
             {
-                musicChannel.clip = clipFound;
-                musicChannel.PlayOneShot(clipFound);
+                if (musicNight.isPlaying)
+                {
+                    musicDusk.clip = clipFound;
+                } else if (musicDusk.isPlaying)
+                {
+                    musicNight.clip = clipFound;
+                }
             }
         }
         else

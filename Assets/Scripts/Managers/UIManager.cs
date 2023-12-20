@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public RoundManager roundManager;
+    private RoundManager roundManager;
+    private DayNightController dayNightController;
+
     public TextMeshProUGUI statusDisplay;
     public TextMeshProUGUI enemiesLeft;
     public TextMeshProUGUI roundCounter;
@@ -15,6 +17,9 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        roundManager = FindObjectOfType<RoundManager>();
+        dayNightController = FindObjectOfType<DayNightController>();
+
         //subscribe to the round events in roundManager
         roundManager.RoundStart += RoundStartDisplay;
         roundManager.RoundEnd += RoundEndDisplay;
@@ -22,6 +27,9 @@ public class UIManager : MonoBehaviour
         roundManager.EnemyKilled += UpdateEnemiesLeftUI;
         roundManager.EnemySpawned += UpdateEnemiesLeftUI;
         roundManager.GameOverEvent += GameOver;
+
+        dayNightController.DuskStarted += Dusk;
+
 
         
 
@@ -39,7 +47,12 @@ public class UIManager : MonoBehaviour
     {
         UpdateEnemiesLeftUI();
         UpdateRoundNumberUI();
-        StartCoroutine(UpdateStatusDisplayUI("Daytime Returns"));
+        StartCoroutine(UpdateStatusDisplayUI("DAWN"));
+    }
+
+    public void Dusk()
+    {
+        StartCoroutine(UpdateStatusDisplayUI("DUSK"));
     }
 
     public IEnumerator UpdateStatusDisplayUI(string _text)

@@ -6,6 +6,9 @@ using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
     public static RoundManager _instance;
+    public static float DayDuration;
+    public static float DuskDuration;
+    public static float NightDuration;
 
     //spawn related
     public Transform[] respawnPositions;
@@ -18,12 +21,20 @@ public class RoundManager : MonoBehaviour
     public int dayTimeDuration = 10;
     public int enemiesSpawned = 0;
 
-    //events
+    //old events system
     public Action RoundStart;
     public Action RoundEnd;
     public Action EnemyKilled;
     public Action EnemySpawned;
     public Action GameOverEvent;
+
+    //new events system - plan
+    public Action DayStart;
+    public Action DayTransition;
+    public Action DuskStart;
+    public Action DuskTransition;
+    public Action NightStart;
+    public Action NightTransition;
 
     //diffulty scaling management
     [Header("Difficulty Scaling")]
@@ -61,7 +72,7 @@ public class RoundManager : MonoBehaviour
             //UI listener queues visual signal of end
             RoundEnd?.Invoke();
             //FADE SOUND prototype - this should be subscribed to by audiomanager
-            audioManager.musicChannel.DOFade(0, 10);
+            audioManager.musicNight.DOFade(0, 10);
             //start over with initializing
             InitializeRound();
         }
