@@ -42,7 +42,6 @@ public class PlayerShoot : MonoBehaviour
             var projectile = Instantiate(projectilePrefab, shootPoint.transform.position, rotation);
             var projectileRb = projectile.GetComponent<Rigidbody>();
             projectileRb.AddForce(shootPoint.forward * shootForce);
-            Destroy(projectile, 3f);
 
             // reset fire delay
             fireTimer = fireDelay;

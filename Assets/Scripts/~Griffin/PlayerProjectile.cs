@@ -22,7 +22,10 @@ public class PlayerProjectile : MonoBehaviour
             {
                 damageable.GetDamage(playerDamage);
                 //play hit sound
-                
+                var projectileRb = projectile.GetComponent<Rigidbody>();
+                projectileRb.freezeRotation = true;
+                projectileRb.isKinematic = true;
+                projectile.transform.SetParent(collision.transform);                
             }
         }
         else if (!collision.gameObject.CompareTag("Player"))
@@ -30,7 +33,7 @@ public class PlayerProjectile : MonoBehaviour
             var projectileRb = projectile.GetComponent<Rigidbody>();
             projectileRb.freezeRotation = true;
             projectileRb.isKinematic = true;
-            //projectile.transform.SetParent(collision.transform);
+            Destroy(projectile, 3f);
         }
         GetComponent<AudioSource>().Play();
     }
