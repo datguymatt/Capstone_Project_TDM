@@ -24649,10 +24649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   respawnPositions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1203228862}
 --- !u!4 &1602957639
 Transform:
   m_ObjectHideFlags: 0
@@ -24681,15 +24678,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPositions:
-  - {fileID: 1602957639}
+  - {fileID: 2009871413}
   roundCounter: 0
   totalRounds: 4
   enemiesLeft: 0
   dayTimeDuration: 45
   enemiesSpawned: 0
   difficultyModifier: 1.3
-  roundEnemyStartCount: 4
-  enemySpawnRate: 5
+  roundEnemyStartCount: 1
+  enemySpawnRate: 1
   enemyPrefab: {fileID: 329646833033735092, guid: 8ef654978d8ad10419c6d2da6280ef82,
     type: 3}
   audioManager: {fileID: 0}
