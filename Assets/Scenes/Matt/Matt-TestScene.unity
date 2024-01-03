@@ -24687,7 +24687,7 @@ MonoBehaviour:
   difficultyModifier: 1.3
   roundEnemyStartCount: 1
   enemySpawnRate: 1
-  enemyPrefab: {fileID: 329646833033735092, guid: 8ef654978d8ad10419c6d2da6280ef82,
+  enemyPrefab: {fileID: 329646833033735092, guid: 3643580e724431d428341293a3252730,
     type: 3}
   audioManager: {fileID: 0}
 --- !u!114 &1602957641
