@@ -24677,20 +24677,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518b312b641709e48a96776aeb8ce459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nightDuration: 10
-  nightTransitionDuration: 10
-  dayDuration: 10
-  dayTransitionDuration: 10
-  duskDuration: 10
-  duskTransitionDuration: 10
-  enemySpawnPositions: []
-  roundCounter: 0
+  enemySpawnPositions:
+  - {fileID: 1220165184}
   totalRounds: 4
-  enemiesLeft: 0
-  enemiesSpawned: 0
-  difficultyModifier: 1.3
   roundEnemyStartCount: 1
   enemySpawnRate: 1
+  difficultyModifier: 1.3
   enemyPrefab: {fileID: 329646833033735092, guid: 8ef654978d8ad10419c6d2da6280ef82,
     type: 3}
   audioManager: {fileID: 0}

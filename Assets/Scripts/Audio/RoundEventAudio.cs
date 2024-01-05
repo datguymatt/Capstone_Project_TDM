@@ -1,18 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
-using UnityEditorInternal;
 
 public class RoundEventAudio : AudioManager
 {
-    //instance
-    private AudioManager audioManager;
-
-    //subscribing to events
-    private RoundManager roundManager;
     private DayNightController dayNightController;
 
     //fade stuff
@@ -21,7 +11,6 @@ public class RoundEventAudio : AudioManager
 
     public void Awake()
     {
-        audioManager = FindObjectOfType<AudioManager>();
         dayNightController = FindObjectOfType<DayNightController>();
         RoundManager.NightStart += FadeToNight;
         RoundManager.TransitionToDayStart += TransitionToDay;
@@ -31,6 +20,7 @@ public class RoundEventAudio : AudioManager
     // ROUND RELATED TRIGGERS
     public void FadeToNight()
     {
+        Debug.Log("sound here");
         if (nightAmbience.playOnAwake)
         {
             //no need to fade, it is start of game
@@ -40,7 +30,7 @@ public class RoundEventAudio : AudioManager
         }
         else
         {
-            audioManager.musicDusk.DOFade(0, 5f).OnComplete(musicNight.Play);
+            musicDusk.DOFade(0, 5f).OnComplete(musicNight.Play);
             //fade in volume of ambience, and music
             dayAmbience.DOFade(0, 5).OnComplete(dayAmbience.Stop);
             nightAmbience.DOFade(maxNightAmbienceVolume, 14).OnComplete(NightStart);
@@ -57,7 +47,7 @@ public class RoundEventAudio : AudioManager
 
     public void TransitionToDay()
     {
-        audioManager.musicNight.DOFade(0, 10);
+        musicNight.DOFade(0, 10);
         dayAmbience.Play();
         musicDay.Play();
         //fade in volume

@@ -95,7 +95,7 @@ public class RoundManager : MonoBehaviour
 
             //start the round loop after stopping any existing ones
             StopAllCoroutines();
-            StartCoroutine(NewRoundCycleClock());
+            StartCoroutine(NewNightRoundClock());
         }
         else
         {
@@ -103,15 +103,11 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    public IEnumerator NewRoundCycleClock()
+    public IEnumerator NewNightRoundClock()
     {
-        if (roundCounter != 1)
+        if (roundCounter == 1)
         {
-            yield return new WaitForSeconds(dayDuration);
-        }
-        else
-        {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
 
         // difficulty modifier will change how quick the cooldown lasts  - roundCoolDownTime -= 2;
@@ -119,30 +115,41 @@ public class RoundManager : MonoBehaviour
         NightStart?.Invoke();
         while (enemiesSpawned < roundEnemyStartCount)
         {
-            //do until the player kills all enemies
+            //do spawn until the player kills all enemies
             yield return new WaitForSeconds(enemySpawnRate);
             SpawnEnemy();
         }
-
     }
 
-    public void TransitionToDay()
+    public IEnumerator TransitionToDay()
     {
-
+        StopCoroutine(NewNightRoundClock());
+        TransitionToDayStart?.Invoke();
+        yield return new WaitForSeconds(transitionToDayDuration);
+        StartCoroutine(Day());
     }
 
-    public void Day()
+    public IEnumerator Day()
     {
-
+        StopCoroutine(TransitionToDay());
+        DayStart?.Invoke();
+        yield return new WaitForSeconds(dayDuration);
+        StartCoroutine(TransitionToDusk());
     }
 
-    public void TransitionToDusk()
+    public IEnumerator TransitionToDusk()
     {
-
+        StopCoroutine(Day());
+        TransitionToDuskStart?.Invoke();
+        yield return new WaitForSeconds(transitionToDuskDuration);
+        StartCoroutine(Dusk());
     }
 
-    public void Dusk()
+    public IEnumerator Dusk()
     {
+        StopCoroutine(TransitionToDusk());
+        DuskStart?.Invoke();
+        yield return new WaitForSeconds(transitionToDuskDuration);
 
     }
     public void InitializeNightRound()
@@ -159,11 +166,9 @@ public class RoundManager : MonoBehaviour
         EnemyKilled?.Invoke();
         if (enemiesLeft == 0 && enemiesSpawned == roundEnemyStartCount)
         {
-            //event signals the end of a 'Night' round, and it's transition period to Daytime Starts
-            TransitionToDayStart?.Invoke();
-            
-            //start over with initializing
-            InitializeNightRound();
+            ////event signals the end of a 'Night' round, and it's transition period to Daytime Starts
+            //TransitionToDayStart?.Invoke();
+            StartCoroutine(TransitionToDay());
         }
     }
 
@@ -172,7 +177,7 @@ public class RoundManager : MonoBehaviour
             enemiesLeft++;
             enemiesSpawned++;
             EnemySpawned?.Invoke();
-            var enemy = Instantiate(enemyPrefab, enemySpawnPositions[UnityEngine.Random.Range(0, enemySpawnPositions.Length)].position, enemySpawnPositions[UnityEngine.Random.Range(0, enemySpawnPositions.Length)].rotation);   
+            var enemy = Instantiate(enemyPrefab, enemySpawnPositions[UnityEngine.Random.Range(0, enemySpawnPositions.Length)].position, enemySpawnPositions[UnityEngine.Random.Range(0, enemySpawnPositions.Length)].rotation);
         
     }
     public void GameOver()
