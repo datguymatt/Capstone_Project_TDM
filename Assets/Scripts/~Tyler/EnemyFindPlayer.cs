@@ -23,6 +23,7 @@ public class EnemyFindPlayer : EnemyState
 
     public override void OnStateUpdate(EnemyStateManager manager)
     {
+        manager.LookAtPlayer(manager, manager.playerTransform.position);
         //Checks if enemy can change state to chase the player
         if (Vector3.Distance(manager.playerTransform.position, manager.transform.position) > manager.startChaseDistance)
         {

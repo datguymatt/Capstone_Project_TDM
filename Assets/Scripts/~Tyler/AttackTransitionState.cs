@@ -16,7 +16,7 @@ public class AttackTransitionState : EnemyState
     {
         manager.agent.enabled = true;
 
-        Debug.Log("Transitioning Attacks");
+        //Debug.Log("Transitioning Attacks");
 
         if (!canJumpAttack)
         {
@@ -31,6 +31,7 @@ public class AttackTransitionState : EnemyState
 
     public override void OnStateUpdate(EnemyStateManager manager)
     {
+        manager.LookAtPlayer(manager, manager.playerTransform.position);
         manager.agent.destination = manager.playerTransform.position;
         distance = Vector3.Distance(manager.transform.position, manager.playerTransform.position);
         if (distance <= manager.jumpAttackRange)

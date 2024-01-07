@@ -16,14 +16,13 @@ public class EnemyCirclePlayerState : EnemyState
     public override void OnStateEnter(EnemyStateManager manager)
     {
         baseSpeed = manager.agent.speed;
-        manager.agent.updateRotation = false;
         manager.agent.speed = baseSpeed * manager.circleSpeedMultiplyer;
-
         EnemyStateTracker.Instance.enemyLeftAttack.AddListener(TryAttack);
     }
 
     public override void OnStateExit(EnemyStateManager manager)
     {
+        manager.animator.SetBool("IsStrafing", false);
         manager.agent.speed = baseSpeed;
         canAttack = false;
         EnemyStateTracker.Instance.enemyLeftAttack.RemoveListener(TryAttack);
@@ -32,13 +31,13 @@ public class EnemyCirclePlayerState : EnemyState
     public override void OnStateUpdate(EnemyStateManager manager)
     {
         distance = Vector3.Distance(manager.transform.position, manager.playerTransform.position);
-        LookAtPlayer(manager, manager.playerTransform.position);
+        manager.LookAtPlayer(manager, manager.playerTransform.position);
 
         if (canAttack)
         {
             if (EnemyStateTracker.Instance.EnemiesInState(manager.attackState.GetClass(), manager.transitionState.GetClass()) <= EnemyStateTracker.Instance.GetMaxAttackingEnemies())
             {
-                Debug.Log("Another enemy stopped attacking");
+                //Debug.Log("Another enemy stopped attacking");
                 manager.ChangeState(manager.transitionState);
             }
             else
@@ -47,35 +46,30 @@ public class EnemyCirclePlayerState : EnemyState
             }
         }
 
-        if (distance <= manager.jumpAttackRange)
+        if (distance <= manager.jumpAttackRange - 2f)
         {
+            manager.animator.SetBool("IsStrafing", false);
             manager.agent.Move(-manager.transform.forward * manager.catchUpSpeed * Time.deltaTime);
         }
-        if (distance >= manager.destinationRadiusFromPlayer - 2f)
+        else if (distance >= manager.jumpAttackRange + 3f)
         {
+            manager.animator.SetBool("IsStrafing", false);
             manager.agent.Move(manager.transform.forward * manager.catchUpSpeed * Time.deltaTime);
         }
-        else if (distance > manager.jumpAttackRange)
+        else
         {
             StrafeLeft(manager, manager.playerTransform.position);
         }
-        if (distance > manager.destinationRadiusFromPlayer + 2f)
+        if (distance > manager.destinationRadiusFromPlayer + 5f)
         {
             manager.ChangeState(manager.chaseState);
         }
 
 
     }
-
-    private void LookAtPlayer(EnemyStateManager manager, Vector3 player)
-    {
-        var lookPos = player - manager.transform.position;
-        lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        manager.transform.rotation = Quaternion.Slerp(manager.transform.rotation, rotation, Time.deltaTime * 2.5f);
-    }
     private void StrafeLeft(EnemyStateManager manager, Vector3 player)
     {
+        manager.animator.SetBool("IsStrafing", true);
         var offset = manager.transform.position - player;
         var dir = Vector3.Cross(offset, Vector3.up);
         manager.agent.SetDestination(manager.transform.position + dir);
@@ -87,15 +81,11 @@ public class EnemyCirclePlayerState : EnemyState
         var offset = player - manager.transform.position;
         var dir = Vector3.Cross(offset, Vector3.up);
         manager.agent.SetDestination(manager.transform.position + dir);
-        var lookPos = player - manager.transform.position;
-        lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        manager.transform.rotation = Quaternion.Slerp(manager.transform.rotation, rotation, Time.deltaTime * 2f);
     }
 
     private void TryAttack()
     {
-        Debug.Log("TryAttacking");
+        //Debug.Log("TryAttacking");
         canAttack = true;
     }
 }

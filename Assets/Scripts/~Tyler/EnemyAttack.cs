@@ -8,7 +8,7 @@ public class EnemyAttack : EnemyState
     private bool isAttacking;
     public override void OnStateEnter(EnemyStateManager manager)
     {
-        Debug.Log("Starting Attack");
+        //Debug.Log("Starting Attack");
         if (manager.currentAttack == EnemyStateManager.Attacks.jumpAttack)
         {
             manager.StartCoroutine(this.JumpAttack(manager, manager.playerTransform));
@@ -27,8 +27,10 @@ public class EnemyAttack : EnemyState
     public override void OnStateUpdate(EnemyStateManager manager)
     {
         distance = Vector3.Distance(manager.transform.position, manager.playerTransform.position);
+
         if (!isAttacking)
         {
+            manager.LookAtPlayer(manager, manager.playerTransform.position);
             manager.agent.destination = manager.playerTransform.position;
         }
     }
@@ -41,6 +43,7 @@ public class EnemyAttack : EnemyState
         Vector3 startingPosition = manager.transform.position;
 
         //SetTrigger for jump animation to start
+        manager.animator.SetTrigger("JumpAttack");
         //Channeling attack
         //Debug.Log("Enemy About To Jump");
         yield return new WaitForSeconds(0.5f);
@@ -48,7 +51,7 @@ public class EnemyAttack : EnemyState
         Vector3 target = new Vector3(player.position.x, startingPosition.y, player.position.z);
         for (float time = 0; time < 1; time += Time.deltaTime * manager.jumpAttackSpeed)
         {
-            manager.transform.position = Vector3.Lerp(startingPosition, target, time) + Vector3.up * manager.jumpCurve.Evaluate(time);
+            manager.transform.position = Vector3.Lerp(startingPosition, new Vector3(player.position.x, startingPosition.y, player.position.z), time) + Vector3.up * manager.jumpCurve.Evaluate(time);
             manager.transform.rotation = Quaternion.Slerp(manager.transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x, manager.transform.position.y, player.position.z) - manager.transform.position), time);
             yield return null;
         }
@@ -71,6 +74,7 @@ public class EnemyAttack : EnemyState
 
     private IEnumerator MeleeAttack(EnemyStateManager manager, Transform player, float cooldown)
     {
+        manager.animator.SetTrigger("Attack");
         isAttacking = true;
         manager.agent.isStopped = true;
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[0], manager.attackDamage, isAttacking));
@@ -92,7 +96,7 @@ public class EnemyAttack : EnemyState
                 if (c.CompareTag("Player"))
                 {
                     IDamageable damageable = c.GetComponent<IDamageable>();
-                    if(damageable != null)
+                    if (damageable != null)
                     {
                         damageable.GetDamage(damage);
                     }
