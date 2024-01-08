@@ -1,7 +1,11 @@
 using UnityEngine;
- 
+using System;
+using System.Collections;
 public class AudioManager : MonoBehaviour
 {
+    //instance
+    public static AudioManager _instance;
+
     [Header("Music")]
     //channels
     public AudioSource musicNight;
@@ -21,11 +25,6 @@ public class AudioManager : MonoBehaviour
     public AudioSource nightAmbience;
     //search
     AudioClip searchResult;
-
-     
-
-
-    public static AudioManager _instance;
 
     void Awake()
     {

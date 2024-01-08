@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class RoundEventAudio : AudioManager
+public class RoundEventAudio : MonoBehaviour
 {
     private DayNightController dayNightController;
 
@@ -15,25 +15,25 @@ public class RoundEventAudio : AudioManager
         RoundManager.NightStart += FadeToNight;
         RoundManager.TransitionToDayStart += TransitionToDay;
         dayNightController.DuskStarted += DuskStart;
-        maxNightAmbienceVolume = nightAmbience.volume;
+        maxNightAmbienceVolume = AudioManager._instance.nightAmbience.volume;
     }
-    // ROUND RELATED TRIGGERS
+    //ROUND RELATED TRIGGERS
     public void FadeToNight()
     {
         Debug.Log("sound here");
-        if (nightAmbience.playOnAwake)
+        if (AudioManager._instance.nightAmbience.playOnAwake)
         {
             //no need to fade, it is start of game
-            nightAmbience.playOnAwake = false;
+            AudioManager._instance.nightAmbience.playOnAwake = false;
             NightStart();
             //set the current max volume as the default for fading back in
         }
         else
         {
-            musicDusk.DOFade(0, 5f).OnComplete(musicNight.Play);
+            AudioManager._instance.musicDusk.DOFade(0, 5f).OnComplete(AudioManager._instance.musicNight.Play);
             //fade in volume of ambience, and music
-            dayAmbience.DOFade(0, 5).OnComplete(dayAmbience.Stop);
-            nightAmbience.DOFade(maxNightAmbienceVolume, 14).OnComplete(NightStart);
+            AudioManager._instance.dayAmbience.DOFade(0, 5).OnComplete(AudioManager._instance.dayAmbience.Stop);
+            AudioManager._instance.nightAmbience.DOFade(maxNightAmbienceVolume, 14).OnComplete(NightStart);
             //music
 
         }
@@ -42,24 +42,24 @@ public class RoundEventAudio : AudioManager
 
     public void NightStart()
     {
-        PlaySFXAudio("night-start");
+        AudioManager._instance.PlaySFXAudio("night-start");
     }
 
     public void TransitionToDay()
     {
-        musicNight.DOFade(0, 10);
-        dayAmbience.Play();
-        musicDay.Play();
+        AudioManager._instance.musicNight.DOFade(0, 10);
+        AudioManager._instance.dayAmbience.Play();
+        AudioManager._instance.musicDay.Play();
         //fade in volume
-        musicDay.DOFade(0.6f, 6);
-        dayAmbience.DOFade(0.5f, 8);
-        nightAmbience.DOFade(0, 8).OnComplete(nightAmbience.Stop);
+        AudioManager._instance.musicDay.DOFade(0.6f, 6);
+        AudioManager._instance.dayAmbience.DOFade(0.5f, 8);
+        AudioManager._instance.nightAmbience.DOFade(0, 8).OnComplete(AudioManager._instance.nightAmbience.Stop);
     }
 
     public void DuskStart()
     {
         //fade out day quickly, then dusk countdown starts
-        musicDay.DOFade(0, 4).OnComplete(musicDusk.Play);
+        AudioManager._instance.musicDay.DOFade(0, 4).OnComplete(AudioManager._instance.musicDusk.Play);
 
     }
 }
