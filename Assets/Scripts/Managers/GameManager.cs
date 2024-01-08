@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public void PlayerRespawn()
     {
         _player.transform.position = respawnPositions[Random.Range(0, respawnPositions.Length)].position;
+        _player.GetComponent<Health>().SetHealth(100);
     }
 
     public void PlayerDead()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    private RoundManager roundManager;
     private DayNightController dayNightController;
 
     public TextMeshProUGUI statusDisplay;
@@ -17,16 +16,16 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        roundManager = FindObjectOfType<RoundManager>();
         dayNightController = FindObjectOfType<DayNightController>();
 
         //subscribe to the round events in roundManager
-        roundManager.RoundStart += RoundStartDisplay;
-        roundManager.RoundEnd += RoundEndDisplay;
+        RoundManager.NightStart += NightStart;
+        RoundManager.TransitionToDayStart += DayStartDisplay;
+        RoundManager.TransitionToDuskStart += Dusk;
         //subscribe to the onhealthupdated and ondeath actions from the player's Health script
-        roundManager.EnemyKilled += UpdateEnemiesLeftUI;
-        roundManager.EnemySpawned += UpdateEnemiesLeftUI;
-        roundManager.GameOverEvent += GameOver;
+        RoundManager.EnemyKilled += UpdateEnemiesLeftUI;
+        RoundManager.EnemySpawned += UpdateEnemiesLeftUI;
+        RoundManager.GameOverEvent += GameOver;
 
         dayNightController.DuskStarted += Dusk;
 
@@ -36,14 +35,14 @@ public class UIManager : MonoBehaviour
     }
 
     //this needs to be cleaned up - more concise design
-    public void RoundStartDisplay()
+    public void NightStart()
     {
         UpdateEnemiesLeftUI();
         UpdateRoundNumberUI();
-        StartCoroutine(UpdateStatusDisplayUI("Night " + roundManager.roundCounter));
+        StartCoroutine(UpdateStatusDisplayUI("Night " + RoundManager.roundCounter));
     }
 
-    public void RoundEndDisplay()
+    public void DayStartDisplay()
     {
         UpdateEnemiesLeftUI();
         UpdateRoundNumberUI();
@@ -66,12 +65,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateEnemiesLeftUI()
     {
-        enemiesLeft.text = "Vamps: " + roundManager.enemiesLeft.ToString();
+        enemiesLeft.text = "Vamps: " + RoundManager.enemiesLeft.ToString();
     }
 
     public void UpdateRoundNumberUI()
     {
-        roundCounter.text = "Day: " + roundManager.roundCounter.ToString();
+        roundCounter.text = "Day: " + RoundManager.roundCounter.ToString();
     }
 
     public void UpdateHealthUI(float _health)

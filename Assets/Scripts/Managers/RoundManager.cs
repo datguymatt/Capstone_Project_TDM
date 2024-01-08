@@ -5,42 +5,49 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+
+    //round manager is the global time keeper and event signal for the flow of night/round cycles
     public static RoundManager _instance;
-    public static float DayDuration;
-    public static float DuskDuration;
-    public static float NightDuration;
+
+    //global round related
+    public static int enemiesLeft = 0;
+    public static int roundCounter = 0;
+
+    //day cycle events
+    //end events are essentially transition events between one stage and another, allowing for time buffers, visual sequences and other things to be triggered in between the start points
+    public static Action TransitionToNightStart;
+    public static Action NightStart; // this used to be 'RoundStart' which is essentially the same thing - a round is now defined as a Night
+    public static Action TransitionToDayStart;
+    public static Action DayStart;
+    public static Action TransitionToDuskStart;
+    public static Action DuskStart;
+    
+    //other static round events
+    public static Action EnemyKilled;
+    public static Action EnemySpawned;
+    public static Action GameOverEvent;
+
+    //durations for round/night cycle
+    public static float transitionToNightDuration = 5;
+    public static float transitionToDayDuration = 5;
+    public static float dayDuration = 10;
+    public static float transitionToDuskDuration = 10;
+    public static float duskDuration = 10;
 
     //spawn related
-    public Transform[] respawnPositions;
+    public Transform[] enemySpawnPositions;
 
-    [Header("Global Round Variables")]
-    //global round related
-    public int roundCounter = 0;
+    //round vars
+    [Header("Round Variables")]
     public int totalRounds = 5;
-    public int enemiesLeft = 0;
-    public int dayTimeDuration = 10;
-    public int enemiesSpawned = 0;
-
-    //old events system
-    public Action RoundStart;
-    public Action RoundEnd;
-    public Action EnemyKilled;
-    public Action EnemySpawned;
-    public Action GameOverEvent;
-
-    //new events system - plan
-    public Action DayStart;
-    public Action DayTransition;
-    public Action DuskStart;
-    public Action DuskTransition;
-    public Action NightStart;
-    public Action NightTransition;
+    public int roundEnemyStartCount = 20;
+    public float enemySpawnRate = 5f;
+    private int enemiesSpawned = 0;
 
     //diffulty scaling management
     [Header("Difficulty Scaling")]
     public float difficultyModifier = 1.2f;
-    public int roundEnemyStartCount = 20;
-    public float enemySpawnRate = 5f;
+    
 
     //enemy prefab for spawning
     public GameObject enemyPrefab;
@@ -58,47 +65,37 @@ public class RoundManager : MonoBehaviour
         {
             _instance = new RoundManager();
         }
-        InitializeRound();
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = FindObjectOfType<AudioManager>(); // remove this later - audio manager should get it's triggers to play sounds based on events only
+        //very start of the game, night starts - after a beginning of game intro time
+        Night();
+        
     }
 
-    //set methods
-    public void KillEnemy()
+    public void TransitionToNight()
     {
-        enemiesLeft--;
-        EnemyKilled?.Invoke();
-        if (enemiesLeft == 0 && enemiesSpawned == roundEnemyStartCount)
-        {
-            //UI listener queues visual signal of end
-            RoundEnd?.Invoke();
-            //FADE SOUND prototype - this should be subscribed to by audiomanager
-            audioManager.musicNight.DOFade(0, 10);
-            //start over with initializing
-            InitializeRound();
-        }
+
     }
 
-
-    public void InitializeRound()
+    public void Night()
     {
         enemiesSpawned = 0;
         if (roundCounter < totalRounds)
         {
-            // new round starts
             roundCounter++;
             //adjust diffculity scaling values if NOT first round
             if (roundCounter != 1)
             {
                 //multiply by difficulty modifier
-                roundEnemyStartCount = (int)(roundEnemyStartCount * difficultyModifier);
-                enemySpawnRate = (int)(enemySpawnRate * difficultyModifier);
+                roundEnemyStartCount += (int)(roundEnemyStartCount * difficultyModifier);
+                //need a better difficulty modification process
+                //enemySpawnRate = (int)(enemySpawnRate * difficultyModifier);
             }
             //set values
             Debug.Log("number of enemies left is " + enemiesLeft);
 
             //start the round loop after stopping any existing ones
             StopAllCoroutines();
-            StartCoroutine(NewRoundLoop());
+            StartCoroutine(NewNightRoundClock());
         }
         else
         {
@@ -106,28 +103,72 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    public IEnumerator NewRoundLoop()
+    public IEnumerator NewNightRoundClock()
     {
-        //start a new round loop of enemy spawns after a cooldown buffer which will get smaller each round
-        if (roundCounter != 1)
+        if (roundCounter == 1)
         {
-            yield return new WaitForSeconds(dayTimeDuration);
+            yield return new WaitForSeconds(2f);
         }
-        else
-        {
-            yield return new WaitForSeconds(1f);
-        }
-        
+
         // difficulty modifier will change how quick the cooldown lasts  - roundCoolDownTime -= 2;
         //UI listener queues visual signal of start
-        RoundStart?.Invoke();
+        NightStart?.Invoke();
         while (enemiesSpawned < roundEnemyStartCount)
         {
-            //do until the player kills all enemies
+            //do spawn until the player kills all enemies
             yield return new WaitForSeconds(enemySpawnRate);
             SpawnEnemy();
         }
+    }
+
+    public IEnumerator TransitionToDay()
+    {
+        StopCoroutine(NewNightRoundClock());
+        TransitionToDayStart?.Invoke();
+        yield return new WaitForSeconds(transitionToDayDuration);
+        StartCoroutine(Day());
+    }
+
+    public IEnumerator Day()
+    {
+        StopCoroutine(TransitionToDay());
+        DayStart?.Invoke();
+        yield return new WaitForSeconds(dayDuration);
+        StartCoroutine(TransitionToDusk());
+    }
+
+    public IEnumerator TransitionToDusk()
+    {
+        StopCoroutine(Day());
+        TransitionToDuskStart?.Invoke();
+        yield return new WaitForSeconds(transitionToDuskDuration);
+        StartCoroutine(Dusk());
+    }
+
+    public IEnumerator Dusk()
+    {
+        StopCoroutine(TransitionToDusk());
+        DuskStart?.Invoke();
+        yield return new WaitForSeconds(transitionToDuskDuration);
+        Night();
+
+    }
+    public void InitializeNightRound()
+    {
         
+    }
+
+    //Enemy Specifics
+    public void KillEnemy()
+    {
+        enemiesLeft--;
+        EnemyKilled?.Invoke();
+        if (enemiesLeft == 0 && enemiesSpawned == roundEnemyStartCount)
+        {
+            ////event signals the end of a 'Night' round, and it's transition period to Daytime Starts
+            //TransitionToDayStart?.Invoke();
+            StartCoroutine(TransitionToDay());
+        }
     }
 
     public void SpawnEnemy()
@@ -135,7 +176,7 @@ public class RoundManager : MonoBehaviour
             enemiesLeft++;
             enemiesSpawned++;
             EnemySpawned?.Invoke();
-            var enemy = Instantiate(enemyPrefab, respawnPositions[UnityEngine.Random.Range(0, respawnPositions.Length)].position, respawnPositions[UnityEngine.Random.Range(0, respawnPositions.Length)].rotation);   
+            var enemy = Instantiate(enemyPrefab, enemySpawnPositions[UnityEngine.Random.Range(0, enemySpawnPositions.Length)].position, enemySpawnPositions[UnityEngine.Random.Range(0, enemySpawnPositions.Length)].rotation);
         
     }
     public void GameOver()

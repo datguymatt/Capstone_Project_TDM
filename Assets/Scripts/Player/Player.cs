@@ -6,7 +6,7 @@ public class Player : MonoBehaviour, IDamageable
     public static Player Instance;
 
     // health
-    public Health playerHealth = new Health(10);
+    public Health playerHealth = new Health(100);
 
     // audio
     public AudioManager audioManager;
