@@ -11,7 +11,7 @@ public class tvtesteron : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-
+        RoundManager.NightStart += NightStart;
     }
 
     // Update is called once per frame
@@ -19,9 +19,22 @@ public class tvtesteron : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.E))
         {
-            tvRenderer.enabled = true;
-            audioSource.Play();
-            videoPlayer.Play();
+            audioSource.Stop();
+            videoPlayer.Stop();
+            tvRenderer.enabled = false;
         }
+    }
+
+    public void NightStart()
+    {
+        StartCoroutine(TvScare());
+    }
+    public IEnumerator TvScare()
+    {
+        yield return new WaitForSeconds(2);
+        tvRenderer.enabled = true;
+        audioSource.Play();
+        videoPlayer.Play();
+        RoundManager.NightStart -= NightStart;
     }
 }

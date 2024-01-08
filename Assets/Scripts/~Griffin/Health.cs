@@ -32,6 +32,11 @@ public class Health
         return maximumHealth;
     }
 
+    public void SetHealth(int _health)
+    {
+        currentHealth = _health;
+    }
+
     public Health(float maxHealth)
     {
         maximumHealth = maxHealth;

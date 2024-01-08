@@ -19,8 +19,9 @@ public class UIManager : MonoBehaviour
         dayNightController = FindObjectOfType<DayNightController>();
 
         //subscribe to the round events in roundManager
-        RoundManager.NightStart += NightRoundStartDisplay;
-        RoundManager.DayStart += DayStartDisplay;
+        RoundManager.NightStart += NightStart;
+        RoundManager.TransitionToDayStart += DayStartDisplay;
+        RoundManager.TransitionToDuskStart += Dusk;
         //subscribe to the onhealthupdated and ondeath actions from the player's Health script
         RoundManager.EnemyKilled += UpdateEnemiesLeftUI;
         RoundManager.EnemySpawned += UpdateEnemiesLeftUI;
@@ -34,7 +35,7 @@ public class UIManager : MonoBehaviour
     }
 
     //this needs to be cleaned up - more concise design
-    public void NightRoundStartDisplay()
+    public void NightStart()
     {
         UpdateEnemiesLeftUI();
         UpdateRoundNumberUI();

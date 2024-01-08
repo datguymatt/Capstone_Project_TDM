@@ -27,6 +27,7 @@ public class DayNightController : MonoBehaviour
         //set listener for round start event
         RoundManager.TransitionToNightStart += SwitchToNightTime;
         RoundManager.TransitionToDayStart += SwitchToDayTime;
+        RoundManager.TransitionToDuskStart += SwitchToDuskTime;
 
         moonMaterial.color = Color.white;
         isFirstRound = true;
@@ -34,7 +35,7 @@ public class DayNightController : MonoBehaviour
 
     public void SwitchToDayTime()
     {
-        transform.DORotateQuaternion(new Quaternion(0.558965564f, -0.424670637f, 0.604867339f, -0.375962704f), RoundManager.transitionToDayDuration).OnComplete(SwitchToDuskTime);
+        transform.DORotateQuaternion(new Quaternion(0.558965564f, -0.424670637f, 0.604867339f, -0.375962704f), RoundManager.transitionToDayDuration);
         moonMaterial.DOColor(moonfadedColor, 7f);
         stars.startColor = moonfadedColor;
         //every once in a while, and evening will have a storm
@@ -51,7 +52,6 @@ public class DayNightController : MonoBehaviour
 
     public void SwitchToDuskTime()
     {
-        DuskStarted?.Invoke();
         //Quaternion(-0.06835825,0.534569681,0.00846953783,0.842312753)
         //transform.DORotateQuaternion(new Quaternion(0.434261024f, 0.555342317f, 0.487651318f, 0.514983892f), time).SetEase(Ease.InOutSine);
         transform.DORotateQuaternion(new Quaternion(-0.06835825f, 0.534569681f, 0.00846953783f, 0.842312753f), RoundManager.transitionToDuskDuration).SetEase(Ease.InOutSine);

@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-8683113160100848733
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 13c4f5c7b686c45488c40c83a44d3f54
+  m_EffectName: Lowpass Simple
+  m_MixLevel: 6d7ce89b914d1954d8b2c7af39e19a9d
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 19a2af646dac989449beb94ea8253dfe
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-7234854769208093580
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -15,6 +31,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 1749001715178502223}
+  - {fileID: -8683113160100848733}
   m_UserColorIndex: 2
   m_Mute: 0
   m_Solo: 0
@@ -131,6 +148,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 19a2af646dac989449beb94ea8253dfe
+    name: ambience-rolloff-indoors
   - guid: 084d77ee674524742947f1bb3a5e1665
     name: mastervol
   - guid: c3869676768b7bd4ab417730dbc71ec7
@@ -198,6 +217,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 034086f492fd9fe47ae4a6bd8c623621
   m_FloatValues:
+    19a2af646dac989449beb94ea8253dfe: 22000
     c3869676768b7bd4ab417730dbc71ec7: 22000
     af5c97986388a2c46abf46436a7d4df3: -1.7612991
     084d77ee674524742947f1bb3a5e1665: -0.037667945
