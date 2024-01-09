@@ -161,9 +161,10 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyGravity()
     {
-        playerVelocity.y += gravity * Time.deltaTime;
+        playerVelocity.y = Mathf.Clamp(playerVelocity.y += gravity * Time.deltaTime, -10, 10);
         playerController.Move(playerVelocity * Time.deltaTime);
     }
+
     private bool GroundCheck()
     {
         return Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);

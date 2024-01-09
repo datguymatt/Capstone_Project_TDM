@@ -244,7 +244,6 @@ GameObject:
   - component: {fileID: 3963234143761882598}
   - component: {fileID: 3963234143761882593}
   - component: {fileID: 3963234143761882592}
-  - component: {fileID: 3963234143761882599}
   m_Layer: 0
   m_Name: PlayerHead
   m_TagString: Untagged
@@ -319,19 +318,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3963234143761882599
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3963234143761882597}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3963234145192841061
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,14 +387,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  sprintMultiplier: 3
+  sprintMultiplier: 2
   turnSpeed: 360
   gravity: -10
-  jumpVelocity: 20
+  jumpVelocity: 10
   groundCheck: {fileID: 607449586373765036}
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  footstepAudioSystem: {fileID: 0}
+  walkSoundPlaying: 0
 --- !u!114 &5626021702169809879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,7 +412,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3909816970197606517, guid: 5150d4d374fc8454498fee7090897528,
     type: 3}
   fireDelay: 0.5
-  shootForce: 1000
+  shootForce: 3000
 --- !u!114 &4808259957884523872
 MonoBehaviour:
   m_ObjectHideFlags: 0

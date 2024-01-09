@@ -34,6 +34,7 @@ public class PlayerProjectile : MonoBehaviour
             projectileRb.freezeRotation = true;
             projectileRb.isKinematic = true;
             Destroy(projectile, 3f);
+            Debug.Log($"{collision.gameObject.name}");
         }
         GetComponent<AudioSource>().Play();
     }
