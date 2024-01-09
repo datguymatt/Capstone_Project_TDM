@@ -97,10 +97,6 @@ public class RoundManager : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(NewNightRoundClock());
         }
-        else
-        {
-            GameOver();
-        }
     }
 
     public IEnumerator NewNightRoundClock()
@@ -167,7 +163,14 @@ public class RoundManager : MonoBehaviour
         {
             ////event signals the end of a 'Night' round, and it's transition period to Daytime Starts
             //TransitionToDayStart?.Invoke();
-            StartCoroutine(TransitionToDay());
+            if (roundCounter < totalRounds)
+            {
+                StartCoroutine(TransitionToDay());
+            } else
+            {
+                GameOver();
+            }
+            
         }
     }
 

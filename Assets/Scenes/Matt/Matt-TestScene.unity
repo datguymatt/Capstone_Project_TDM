@@ -24600,7 +24600,7 @@ MonoBehaviour:
   - {fileID: 99354638}
   - {fileID: 1084222151}
   - {fileID: 461371291}
-  totalRounds: 4
+  totalRounds: 2
   roundEnemyStartCount: 7
   enemySpawnRate: 1
   difficultyModifier: 1.3
