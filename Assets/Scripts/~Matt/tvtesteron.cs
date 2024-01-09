@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class tvtesteron : MonoBehaviour
+public class Tvtesteron : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public MeshRenderer tvRenderer;
@@ -35,6 +35,6 @@ public class tvtesteron : MonoBehaviour
         tvRenderer.enabled = true;
         audioSource.Play();
         videoPlayer.Play();
-        RoundManager.NightStart -= NightStart;
+        
     }
 }
