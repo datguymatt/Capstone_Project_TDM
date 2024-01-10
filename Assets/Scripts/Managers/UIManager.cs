@@ -78,12 +78,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateEnemiesLeftUI()
     {
-        enemiesLeft.text = "Vamps: " + RoundManager.enemiesLeft.ToString();
+        enemiesLeft.text = "Vamps " + RoundManager.enemiesLeft.ToString();
     }
 
     public void UpdateRoundNumberUI()
     {
-        roundCounter.text = "Day: " + RoundManager.roundCounter.ToString();
+        roundCounter.text = "Day " + RoundManager.roundCounter.ToString();
     }
 
     public void UpdateHealthUI()
