@@ -55,7 +55,7 @@ public class RoundManager : MonoBehaviour
     //public
     public AudioManager audioManager;
 
-    void Awake()
+    void Start()
     {
         if (_instance != null)
         {
@@ -67,13 +67,15 @@ public class RoundManager : MonoBehaviour
         }
         audioManager = FindObjectOfType<AudioManager>(); // remove this later - audio manager should get it's triggers to play sounds based on events only
         //very start of the game, night starts - after a beginning of game intro time
+        ResetRoundParameters();
         Night();
         
     }
 
-    public void TransitionToNight()
+    private void ResetRoundParameters()
     {
-
+        roundCounter = 0;
+        enemiesLeft = 0;
     }
 
     public void Night()
@@ -149,10 +151,7 @@ public class RoundManager : MonoBehaviour
         Night();
 
     }
-    public void InitializeNightRound()
-    {
-        
-    }
+    
 
     //Enemy Specifics
     public void KillEnemy()
@@ -185,6 +184,5 @@ public class RoundManager : MonoBehaviour
     public void GameOver()
     {
         GameOverEvent?.Invoke();
-        //put all the logic that will end the game and start a new sequence
     }
 }

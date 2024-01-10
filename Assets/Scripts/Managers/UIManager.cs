@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     //
     public float displayMessageTime = 4f;
 
-    private void Awake()
+    private void Start()
     {
         dayNightController = FindObjectOfType<DayNightController>();
 
@@ -35,6 +35,18 @@ public class UIManager : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        RoundManager.NightStart -= NightStart;
+        RoundManager.TransitionToDayStart -= DayStartDisplay;
+        RoundManager.TransitionToDuskStart -= Dusk;
+        //subscribe to the onhealthupdated and ondeath actions from the player's Health script
+        RoundManager.EnemyKilled -= UpdateEnemiesLeftUI;
+        RoundManager.EnemySpawned -= UpdateEnemiesLeftUI;
+        RoundManager.GameOverEvent -= GameOver;
+
+        dayNightController.DuskStarted -= Dusk;
+    }
     //this needs to be cleaned up - more concise design
     public void NightStart()
     {

@@ -34,20 +34,5 @@ public class GameManager : MonoBehaviour
             _instance = new GameManager();
 
         }
-        //initialize player stuff
-        _player = GameObject.Find("Player");
-        //sub to events it will need to hear
-        _player.GetComponent<Player>().PlayerDead += PlayerDead;
-    }
-
-    public void PlayerRespawn()
-    {
-        _player.transform.position = respawnPositions[Random.Range(0, respawnPositions.Length)].position;
-        _player.GetComponent<Health>().SetHealth(100);
-    }
-
-    public void PlayerDead()
-    {
-        PlayerRespawn();
     }
 }

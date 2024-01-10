@@ -20,6 +20,14 @@ public class RoundEventAudio : MonoBehaviour
         RoundManager.DuskStart += Dusk;
         maxNightAmbienceVolume = audioManager.nightAmbience.volume;
     }
+
+    private void OnDestroy()
+    {
+        RoundManager.NightStart -= NightStart;
+        RoundManager.TransitionToDayStart -= TransitionToDay;
+        RoundManager.TransitionToDuskStart -= TransitionToDusk;
+        RoundManager.DuskStart -= Dusk;
+    }
     //ROUND RELATED TRIGGERS
 
     public void NightStart()

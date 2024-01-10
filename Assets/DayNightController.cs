@@ -22,7 +22,7 @@ public class DayNightController : MonoBehaviour
     public Action DuskStarted;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         //set listener for round start event
         RoundManager.TransitionToNightStart += SwitchToNightTime;
@@ -31,6 +31,13 @@ public class DayNightController : MonoBehaviour
 
         moonMaterial.color = Color.white;
         isFirstRound = true;
+    }
+
+    private void OnDestroy()
+    {
+        RoundManager.TransitionToNightStart -= SwitchToNightTime;
+        RoundManager.TransitionToDayStart -= SwitchToDayTime;
+        RoundManager.TransitionToDuskStart -= SwitchToDuskTime;
     }
 
     public void SwitchToDayTime()

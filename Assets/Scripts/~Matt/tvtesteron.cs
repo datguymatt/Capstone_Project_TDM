@@ -14,6 +14,11 @@ public class Tvtesteron : MonoBehaviour
         RoundManager.NightStart += NightStart;
     }
 
+    private void OnDestroy()
+    {
+        RoundManager.NightStart -= NightStart;
+    }
+
     // Update is called once per frame
     void Update()
     {
