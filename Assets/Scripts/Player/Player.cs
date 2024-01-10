@@ -24,13 +24,13 @@ public class Player : MonoBehaviour, IDamageable
         if (Instance != null) { Destroy(this); }
         else { Instance = this; }
         audioManager = FindObjectOfType<AudioManager>();
-        uiManager.UpdateHealthUI(playerHealth.GetMaxHealth());
+        uiManager.UpdateHealthUI();
     }
 
     public void GetDamage(float damage)
     {
         playerHealth.TakeDamage(damage);
-        uiManager.UpdateHealthUI(playerHealth.GetHealth());
+        uiManager.UpdateHealthUI();
         DamageTaken?.Invoke();
         if (playerHealth.GetHealth() <= 0)
         {

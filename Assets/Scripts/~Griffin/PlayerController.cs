@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyGravity()
     {
-        playerVelocity.y = Mathf.Clamp(playerVelocity.y += gravity * Time.deltaTime, -10, 10);
+        playerVelocity.y = Mathf.Clamp(playerVelocity.y += gravity * Time.deltaTime, gravity, jumpVelocity);
         playerController.Move(playerVelocity * Time.deltaTime);
     }
 

@@ -36,7 +36,7 @@ public class PlayerShoot : MonoBehaviour
             var playerHeadTransform = shootPoint.GetComponentInParent<Transform>();
 
             // Create projectile rotation by flipping playerHead forward and upward (because default rotation for projectile is 90 deg off what we need)
-            Quaternion rotation = Quaternion.LookRotation(playerHeadTransform.up, playerHeadTransform.forward);
+            Quaternion rotation = Quaternion.LookRotation(playerHeadTransform.forward, playerHeadTransform.up);
 
             //Create projctile and get rb for adding force, then destroy
             var projectile = Instantiate(projectilePrefab, shootPoint.transform.position, rotation);

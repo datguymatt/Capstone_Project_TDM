@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI statusDisplay;
     public TextMeshProUGUI enemiesLeft;
     public TextMeshProUGUI roundCounter;
-    public TextMeshProUGUI health;
+    public Slider health;
 
     //
     public float displayMessageTime = 4f;
@@ -73,10 +74,9 @@ public class UIManager : MonoBehaviour
         roundCounter.text = "Day: " + RoundManager.roundCounter.ToString();
     }
 
-    public void UpdateHealthUI(float _health)
+    public void UpdateHealthUI()
     {
-        //these are 
-        health.text = "Health: " + _health.ToString();
+        health.value = Player.Instance.playerHealth.GetHealth() / Player.Instance.playerHealth.GetMaxHealth();
     }
 
     public void GameOver()
