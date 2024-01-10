@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyCirclePlayerState : EnemyState
@@ -18,6 +19,7 @@ public class EnemyCirclePlayerState : EnemyState
         baseSpeed = manager.agent.speed;
         manager.agent.speed = baseSpeed * manager.circleSpeedMultiplyer;
         EnemyStateTracker.Instance.enemyLeftAttack.AddListener(TryAttack);
+        manager.StartCoroutine(TryAttackTimer(manager.tryAttackingFrequency));
     }
 
     public override void OnStateExit(EnemyStateManager manager)
@@ -43,15 +45,16 @@ public class EnemyCirclePlayerState : EnemyState
             else
             {
                 canAttack = false;
+                manager.StartCoroutine(TryAttackTimer(manager.tryAttackingFrequency));
             }
         }
 
-        if (distance <= manager.jumpAttackRange - 2f)
+        if (distance <= manager.jumpAttackRange - 3f)
         {
             manager.animator.SetBool("IsStrafing", false);
             manager.agent.Move(-manager.transform.forward * manager.catchUpSpeed * Time.deltaTime);
         }
-        else if (distance >= manager.jumpAttackRange + 3f)
+        else if (distance >= manager.jumpAttackRange)
         {
             manager.animator.SetBool("IsStrafing", false);
             manager.agent.Move(manager.transform.forward * manager.catchUpSpeed * Time.deltaTime);
@@ -60,7 +63,7 @@ public class EnemyCirclePlayerState : EnemyState
         {
             StrafeLeft(manager, manager.playerTransform.position);
         }
-        if (distance > manager.destinationRadiusFromPlayer + 5f)
+        if (distance > manager.destinationRadiusFromPlayer)
         {
             manager.ChangeState(manager.chaseState);
         }
@@ -87,6 +90,13 @@ public class EnemyCirclePlayerState : EnemyState
     {
         //Debug.Log("TryAttacking");
         canAttack = true;
+    }
+
+    private IEnumerator TryAttackTimer(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        canAttack = true;
+        yield return null;
     }
 }
 

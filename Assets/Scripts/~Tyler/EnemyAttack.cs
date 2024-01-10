@@ -15,7 +15,7 @@ public class EnemyAttack : EnemyState
         }
         if (manager.currentAttack == EnemyStateManager.Attacks.meleeAttack)
         {
-            manager.StartCoroutine(this.MeleeAttack(manager, manager.playerTransform, 2f));
+            manager.StartCoroutine(this.MeleeAttack(manager, manager.playerTransform, 1f));
         }
     }
 
@@ -46,17 +46,21 @@ public class EnemyAttack : EnemyState
         manager.animator.SetTrigger("JumpAttack");
         //Channeling attack
         //Debug.Log("Enemy About To Jump");
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
 
         Vector3 target = new Vector3(player.position.x, startingPosition.y, player.position.z);
         for (float time = 0; time < 1; time += Time.deltaTime * manager.jumpAttackSpeed)
         {
-            manager.transform.position = Vector3.Lerp(startingPosition, new Vector3(player.position.x, startingPosition.y, player.position.z), time) + Vector3.up * manager.jumpCurve.Evaluate(time);
-            manager.transform.rotation = Quaternion.Slerp(manager.transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x, manager.transform.position.y, player.position.z) - manager.transform.position), time);
+            if (time < 0.7f)
+            {
+                target = new Vector3(player.position.x, startingPosition.y, player.position.z);
+            }
+            manager.transform.position = Vector3.Lerp(startingPosition, target, time) + Vector3.up * manager.jumpCurve.Evaluate(time);
+            manager.transform.rotation = Quaternion.Slerp(manager.transform.rotation, Quaternion.LookRotation(new Vector3(target.x, manager.transform.position.y, target.z) - manager.transform.position), time);
             yield return null;
         }
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[1], manager.attackDamage, isAttacking));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.25f);
         //Debug.Log("Jump Attack Ended");
         //SetTrigger for attack animation to end
 
@@ -67,7 +71,7 @@ public class EnemyAttack : EnemyState
         }
 
         isAttacking = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         manager.ChangeState(manager.transitionState);
     }
 
@@ -78,7 +82,7 @@ public class EnemyAttack : EnemyState
         isAttacking = true;
         manager.agent.isStopped = true;
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[0], manager.attackDamage, isAttacking));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         manager.agent.isStopped = false;
         isAttacking = false;
         yield return new WaitForSeconds(cooldown);

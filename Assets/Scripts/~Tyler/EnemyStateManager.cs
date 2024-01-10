@@ -23,6 +23,7 @@ public class EnemyStateManager : MonoBehaviour
     public float chaseSpeedMultiplier = 2;
 
     [Header("Attack Variables")]
+    public float tryAttackingFrequency = 5f;
     public float meleeAttackRange = 1.5f;
     public float jumpAttackRange = 10f;
     public float jumpAttackCooldown = 5f;

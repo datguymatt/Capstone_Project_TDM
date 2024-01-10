@@ -27,11 +27,11 @@ public class EnemyFindPlayer : EnemyState
         //Checks if enemy can change state to chase the player
         if (Vector3.Distance(manager.playerTransform.position, manager.transform.position) > manager.startChaseDistance)
         {
-            manager.agent.destination = ApproachAroundPlayer(manager.playerTransform.position, manager);
+            manager.agent.destination = manager.playerTransform.position;
         }
         else
         {
-            Debug.Log("Enemy Started Chasing the Player");
+            //Debug.Log("Enemy Started Chasing the Player");
             manager.agent.destination = manager.playerTransform.position;
 
             manager.ChangeState(manager.chaseState);

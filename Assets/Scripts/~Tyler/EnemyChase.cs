@@ -42,11 +42,6 @@ public class EnemyChase : EnemyState
             {
                 manager.ChangeState(manager.transitionState);
             }
-
-        }
-        if (distance > manager.startChaseDistance)
-        {
-            manager.ChangeState(manager.findPlayerState);
         }
     }
 }

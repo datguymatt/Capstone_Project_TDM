@@ -56,6 +56,11 @@ public class AttackTransitionState : EnemyState
                 return;
             }
         }
+        else
+        {
+            EnemyStateTracker.Instance.enemyLeftAttack.Invoke();
+            manager.ChangeState(manager.circleState);
+        }
     }
 
     private IEnumerator JumpAttackCooldown(EnemyStateManager manager)
