@@ -17,11 +17,15 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            //play sfx
+            int randomFileNumber = Random.Range(1, 2);
+            GameObject.FindAnyObjectByType<AudioManager>().PlaySFXAudio("enemy-hit-" + randomFileNumber.ToString());
+            //
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
             if (damageable != null)
             {
                 damageable.GetDamage(playerDamage);
-                //play hit sound
+                //play hit enemy sound
                 var projectileRb = projectile.GetComponent<Rigidbody>();
                 projectileRb.freezeRotation = true;
                 projectileRb.isKinematic = true;
@@ -30,12 +34,14 @@ public class PlayerProjectile : MonoBehaviour
         }
         else if (!collision.gameObject.CompareTag("Player"))
         {
+            //play sfx
+            GameObject.FindAnyObjectByType<AudioManager>().PlaySFXAudio("bolt-hit-wood");
+            //
             var projectileRb = projectile.GetComponent<Rigidbody>();
             projectileRb.freezeRotation = true;
             projectileRb.isKinematic = true;
             Destroy(projectile, 3f);
             Debug.Log($"{collision.gameObject.name}");
         }
-        GetComponent<AudioSource>().Play();
     }
 }

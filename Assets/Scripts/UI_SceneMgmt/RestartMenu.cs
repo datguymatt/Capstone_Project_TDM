@@ -34,11 +34,12 @@ public class RestartMenu : MonoBehaviour
 
     public void ActivateRestartMenu()
     {
+        GetComponent<AudioSource>().Play();
         mainCanvas.SetActive(false);
         restartMenu.SetActive(true);
 
         audioMixer.DOKill();
-        audioMixer.SetFloat("masterFilterFreq", 250);
+        audioMixer.SetFloat("masterFilterFreq", 140);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         isPaused = true;

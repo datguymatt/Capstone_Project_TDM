@@ -59,6 +59,10 @@ public class EnemyAttack : EnemyState
             manager.transform.rotation = Quaternion.Slerp(manager.transform.rotation, Quaternion.LookRotation(new Vector3(target.x, manager.transform.position.y, target.z) - manager.transform.position), time);
             yield return null;
         }
+        //play sfx
+        int randomFileNumber = Random.Range(1, 4);
+        GameObject.FindAnyObjectByType<AudioManager>().PlaySFXAudio("enemy-attack-" + randomFileNumber.ToString());
+        //
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[1], manager.attackDamage, isAttacking));
         yield return new WaitForSeconds(0.15f);
         //Debug.Log("Jump Attack Ended");

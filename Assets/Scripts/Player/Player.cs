@@ -29,6 +29,10 @@ public class Player : MonoBehaviour, IDamageable
 
     public void GetDamage(float damage)
     {
+        //play sfx
+        int randomFileNumber = UnityEngine.Random.Range(1, 4);
+        FindAnyObjectByType<AudioManager>().PlaySFXAudio("player-take-damage-" + randomFileNumber.ToString());
+        //
         playerHealth.TakeDamage(damage);
         uiManager.UpdateHealthUI();
         DamageTaken?.Invoke();

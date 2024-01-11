@@ -13,6 +13,13 @@ public class EnemyChase : EnemyState
 
     public override void OnStateEnter(EnemyStateManager manager)
     {
+        //hacked together audio system using random for variation
+        int fileNumber = Random.Range(1, 4);
+        Debug.Log("enemy-hiss-" + fileNumber.ToString());
+        //enemy-hiss-2
+        GameObject.FindAnyObjectByType<AudioManager>().PlaySFXAudio("enemy-hiss-" + fileNumber.ToString());
+
+        //
         baseSpeed = manager.agent.speed;
         manager.agent.speed = baseSpeed * manager.chaseSpeedMultiplier;
     }

@@ -45,7 +45,9 @@ public class PlayerShoot : MonoBehaviour
 
             // reset fire delay
             fireTimer = fireDelay;
-            Player.Instance.audioManager.PlaySFXAudio("flagpole-bump");
+            //playsfx
+            int randomFileNumber = Random.Range(1, 4);
+            GameObject.FindAnyObjectByType<AudioManager>().PlaySFXAudio("crossbow-fire-" + randomFileNumber.ToString());
 
         }
     }

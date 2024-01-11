@@ -7,6 +7,9 @@ public class Tvtesteron : MonoBehaviour
     public VideoPlayer videoPlayer;
     public MeshRenderer tvRenderer;
     public AudioSource audioSource;
+
+    public bool isOn;
+    public bool isFirstRound = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,11 +24,19 @@ public class Tvtesteron : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.E))
+       if(Input.GetKeyDown(KeyCode.E) && isOn)
         {
             audioSource.Stop();
             videoPlayer.Stop();
             tvRenderer.enabled = false;
+            isOn = false;
+        }
+       else if (Input.GetKeyDown(KeyCode.E) && !isOn)
+        {
+            audioSource.Play();
+            videoPlayer.Play();
+            tvRenderer.enabled = true;
+            isOn = true;
         }
     }
 
@@ -35,10 +46,14 @@ public class Tvtesteron : MonoBehaviour
     }
     public IEnumerator TvScare()
     {
-        yield return new WaitForSeconds(2);
-        tvRenderer.enabled = true;
-        audioSource.Play();
-        videoPlayer.Play();
-        
+        if (isFirstRound)
+        {
+            yield return new WaitForSeconds(2);
+            tvRenderer.enabled = true;
+            audioSource.Play();
+            videoPlayer.Play();
+            isOn = true;
+            isFirstRound = false;
+        }
     }
 }

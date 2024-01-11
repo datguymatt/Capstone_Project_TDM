@@ -19,6 +19,7 @@ public class VampireEnemy : Enemy
     }
     public override void GetDamage(float damage)
     {
+        //
         Debug.Log($"{this.name} took {damage} damage");
         this.health.TakeDamage(damage);
 

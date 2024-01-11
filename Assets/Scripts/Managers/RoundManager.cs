@@ -164,6 +164,7 @@ public class RoundManager : MonoBehaviour
             //TransitionToDayStart?.Invoke();
             if (roundCounter < totalRounds)
             {
+                enemiesLeft = 0;
                 StartCoroutine(TransitionToDay());
             } else
             {
