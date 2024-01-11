@@ -1,4 +1,3 @@
-using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -30,9 +29,9 @@ public class RoundManager : MonoBehaviour
     //durations for round/night cycle
     public static float transitionToNightDuration = 5;
     public static float transitionToDayDuration = 5;
-    public static float dayDuration = 10;
-    public static float transitionToDuskDuration = 10;
-    public static float duskDuration = 10;
+    public static float dayDuration = 5;
+    public static float transitionToDuskDuration = 6;
+    public static float duskDuration = 6;
 
     //spawn related
     public Transform[] enemySpawnPositions;
@@ -90,7 +89,7 @@ public class RoundManager : MonoBehaviour
                 //multiply by difficulty modifier
                 roundEnemyStartCount += (int)(roundEnemyStartCount * difficultyModifier);
                 //need a better difficulty modification process
-                //enemySpawnRate = (int)(enemySpawnRate * difficultyModifier);
+                enemySpawnRate = (int)(enemySpawnRate * difficultyModifier);
             }
             //set values
             Debug.Log("number of enemies left is " + enemiesLeft);
