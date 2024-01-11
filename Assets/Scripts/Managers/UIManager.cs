@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI enemiesLeft;
     public TextMeshProUGUI roundCounter;
     public Slider health;
+    public Image bloodFlashImage;
+    public Color bloodFlashColor;
 
     //
     public float displayMessageTime = 4f;
@@ -30,7 +32,7 @@ public class UIManager : MonoBehaviour
 
         dayNightController.DuskStarted += Dusk;
 
-
+        bloodFlashColor = bloodFlashImage.color;
         
 
     }
@@ -88,7 +90,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        health.value = Player.Instance.playerHealth.GetHealth() / Player.Instance.playerHealth.GetMaxHealth();
+        float healthPercent = Player.Instance.playerHealth.GetHealth() / Player.Instance.playerHealth.GetMaxHealth();
+        health.value = healthPercent;
+        bloodFlashColor.a = healthPercent;
     }
 
     public void GameOver()
