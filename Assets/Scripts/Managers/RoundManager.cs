@@ -26,7 +26,8 @@ public class RoundManager : MonoBehaviour
     public static Action EnemySpawned;
     public static Action GameOverEvent;
 
-    //durations for round/night cycle
+    //static clock durations for round/night cycle transitions
+    //NIGHT ends via event, not timed
     public static float transitionToNightDuration = 5;
     public static float transitionToDayDuration = 5;
     public static float dayDuration = 5;

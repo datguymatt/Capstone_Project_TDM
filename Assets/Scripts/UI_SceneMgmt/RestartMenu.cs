@@ -65,10 +65,4 @@ public class RestartMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void ReturnToMainMenu()
-    {
-        //load main menu
-
-    }
-
 }
