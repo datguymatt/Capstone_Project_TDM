@@ -51,7 +51,7 @@ public class EnemyAttack : EnemyState
         Vector3 target = new Vector3(player.position.x, startingPosition.y, player.position.z);
         for (float time = 0; time < 1; time += Time.deltaTime * manager.jumpAttackSpeed)
         {
-            if (time < 0.7f)
+            if (time < 0.65f)
             {
                 target = new Vector3(player.position.x, startingPosition.y, player.position.z);
             }
@@ -60,7 +60,7 @@ public class EnemyAttack : EnemyState
             yield return null;
         }
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[1], manager.attackDamage, isAttacking));
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.15f);
         //Debug.Log("Jump Attack Ended");
         //SetTrigger for attack animation to end
 
@@ -82,7 +82,7 @@ public class EnemyAttack : EnemyState
         isAttacking = true;
         manager.agent.isStopped = true;
         manager.StartCoroutine(LaunchAttack(manager.attackHitboxes[0], manager.attackDamage, isAttacking));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         manager.agent.isStopped = false;
         isAttacking = false;
         yield return new WaitForSeconds(cooldown);
@@ -103,13 +103,13 @@ public class EnemyAttack : EnemyState
                     if (damageable != null)
                     {
                         damageable.GetDamage(damage);
+                        col.enabled = false;
+                        yield break;
                     }
                     else
                     {
                         continue;
                     }
-                    col.enabled = false;
-                    yield break;
                 }
             }
             yield return null;

@@ -39,7 +39,7 @@ public class EnemyCirclePlayerState : EnemyState
         {
             if (EnemyStateTracker.Instance.EnemiesInState(manager.attackState.GetClass(), manager.transitionState.GetClass()) <= EnemyStateTracker.Instance.GetMaxAttackingEnemies())
             {
-                //Debug.Log("Another enemy stopped attacking");
+                //Debug.Log("Another enemy stopped attacking");                
                 manager.ChangeState(manager.transitionState);
             }
             else
@@ -49,7 +49,7 @@ public class EnemyCirclePlayerState : EnemyState
             }
         }
 
-        if (distance <= manager.jumpAttackRange - 3f)
+        /*if (distance <= manager.jumpAttackRange - 3f)
         {
             manager.animator.SetBool("IsStrafing", false);
             manager.agent.Move(-manager.transform.forward * manager.catchUpSpeed * Time.deltaTime);
@@ -58,17 +58,14 @@ public class EnemyCirclePlayerState : EnemyState
         {
             manager.animator.SetBool("IsStrafing", false);
             manager.agent.Move(manager.transform.forward * manager.catchUpSpeed * Time.deltaTime);
-        }
-        else
-        {
-            StrafeLeft(manager, manager.playerTransform.position);
-        }
-        if (distance > manager.destinationRadiusFromPlayer)
+        }*/
+
+        StrafeLeft(manager, manager.playerTransform.position);
+
+        if (distance > manager.jumpAttackRange)
         {
             manager.ChangeState(manager.chaseState);
         }
-
-
     }
     private void StrafeLeft(EnemyStateManager manager, Vector3 player)
     {

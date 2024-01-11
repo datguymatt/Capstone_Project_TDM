@@ -5,6 +5,7 @@ public class AttackTransitionState : EnemyState
 {
     private float distance;
     private bool canJumpAttack = true;
+    private float baseSpeed;
 
     public override string GetClass()
     {
@@ -14,25 +15,23 @@ public class AttackTransitionState : EnemyState
 
     public override void OnStateEnter(EnemyStateManager manager)
     {
-        manager.agent.enabled = true;
-
         //Debug.Log("Transitioning Attacks");
+        baseSpeed = manager.agent.speed;
+        manager.agent.speed = baseSpeed * manager.catchUpSpeed;
 
-        if (!canJumpAttack)
-        {
-            manager.StartCoroutine(JumpAttackCooldown(manager));
-        }
     }
 
     public override void OnStateExit(EnemyStateManager manager)
     {
-
+        if (!canJumpAttack)
+        {
+            manager.StartCoroutine(JumpAttackCooldown(manager));
+        }
+        manager.agent.speed = baseSpeed;
     }
 
     public override void OnStateUpdate(EnemyStateManager manager)
     {
-        manager.LookAtPlayer(manager, manager.playerTransform.position);
-        manager.agent.destination = manager.playerTransform.position;
         distance = Vector3.Distance(manager.transform.position, manager.playerTransform.position);
         if (distance <= manager.jumpAttackRange)
         {
@@ -42,25 +41,21 @@ public class AttackTransitionState : EnemyState
                 manager.ChangeState(manager.attackState);
                 return;
             }
-            if (canJumpAttack && distance > manager.meleeAttackRange)
+            else if (canJumpAttack)
             {
                 manager.currentAttack = EnemyStateManager.Attacks.jumpAttack;
                 canJumpAttack = false;
                 manager.ChangeState(manager.attackState);
                 return;
             }
-            else
-            {
-                EnemyStateTracker.Instance.enemyLeftAttack.Invoke();
-                manager.ChangeState(manager.circleState);
-                return;
-            }
         }
         else
         {
             EnemyStateTracker.Instance.enemyLeftAttack.Invoke();
-            manager.ChangeState(manager.circleState);
+            manager.ChangeState(manager.chaseState);
         }
+        manager.LookAtPlayer(manager, manager.playerTransform.position);
+        manager.agent.destination = manager.playerTransform.position;
     }
 
     private IEnumerator JumpAttackCooldown(EnemyStateManager manager)

@@ -390,12 +390,12 @@ MonoBehaviour:
   movementSpeed: 5
   sprintMultiplier: 2
   turnSpeed: 360
-  gravity: -10
-  jumpVelocity: 10
+  gravity: -17.5
+  jumpVelocity: 7.5
   groundCheck: {fileID: 607449586373765036}
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   footstepAudioSystem: {fileID: 0}
   walkSoundPlaying: 0
 --- !u!114 &5626021702169809879
@@ -413,7 +413,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7896049485948476651, guid: e4c6a8ad446e80c4bb00d152cd8f3c36,
     type: 3}
   fireDelay: 0.5
-  shootForce: 3528.88
+  shootForce: 3000
 --- !u!114 &4808259957884523872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9075884379152462253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.342, y: -0.609, z: 2.313}
+  m_LocalPosition: {x: 0.379, y: -0.609, z: 1.978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
