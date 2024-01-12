@@ -28,6 +28,14 @@ public class DayNightController : MonoBehaviour
 
         moonMaterial.color = Color.white;
         isFirstRound = true;
+
+        //
+        isFirstRound = false;
+        DOTween.To(() => windZone.WindSpeed, x => windZone.WindSpeed = x, 70f, 20);
+        DOTween.To(() => windZone.Turbulence, x => windZone.Turbulence = x, 0.9f, 20);
+        stormActive = true;
+        GetComponent<AudioSource>().DOFade(0.497f, 4);
+        GetComponent<AudioSource>().Play();
     }
 
     private void OnDestroy()

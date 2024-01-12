@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
         RoundManager.EnemyKilled += UpdateEnemiesLeftUI;
         RoundManager.EnemySpawned += UpdateEnemiesLeftUI;
         RoundManager.GameOverEvent += GameOver;
+        Player.Instance.HealthLow += 
 
         dayNightController.DuskStarted += Dusk;
 
@@ -93,6 +95,13 @@ public class UIManager : MonoBehaviour
         float healthPercent = Player.Instance.playerHealth.GetHealth() / Player.Instance.playerHealth.GetMaxHealth();
         health.value = healthPercent;
         bloodFlashColor.a = healthPercent;
+    }
+
+    public void HealthLow()
+    {
+        //tint the screen red flashing, add a heartbeat sound
+        bloodFlashImage.DOColor(bloodFlashColor, 2).SetLoops(-1);
+
     }
 
     public void GameOver()

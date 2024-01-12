@@ -42,7 +42,7 @@ public class RoundManager : MonoBehaviour
     public int totalRounds = 5;
     public int roundEnemyStartCount = 20;
     public float enemySpawnRate = 5f;
-    private int enemiesSpawned = 0;
+    [SerializeField] private int enemiesSpawned = 0;
 
     //diffulty scaling management
     [Header("Difficulty Scaling")]
@@ -164,7 +164,6 @@ public class RoundManager : MonoBehaviour
             //TransitionToDayStart?.Invoke();
             if (roundCounter < totalRounds)
             {
-                enemiesLeft = 0;
                 StartCoroutine(TransitionToDay());
             } else
             {
