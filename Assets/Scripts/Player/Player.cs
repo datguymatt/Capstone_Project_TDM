@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ public class Player : MonoBehaviour, IDamageable
     public Action HealthLow;
     public Action PlayerDead;
 
+    //camera
+    public Camera camera;
+
 
     private void Awake()
     {
@@ -32,6 +36,8 @@ public class Player : MonoBehaviour, IDamageable
         //play sfx
         int randomFileNumber = UnityEngine.Random.Range(1, 4);
         FindAnyObjectByType<AudioManager>().PlaySFXAudio("player-take-damage-" + randomFileNumber.ToString());
+        //visual indication
+        camera.DOShakeRotation(0.3f, 10, 3);
         //
         playerHealth.TakeDamage(damage);
         uiManager.UpdateHealthUI();
@@ -40,8 +46,9 @@ public class Player : MonoBehaviour, IDamageable
         {
             Die();
 
-        } else if (playerHealth.GetHealth() <= (playerHealth.GetMaxHealth() * 0.20f))
-        { 
+        } else if (playerHealth.GetHealth() <= (playerHealth.GetMaxHealth() * 0.3f))
+        {
+            Debug.Log("Health is low!");
             //health is less than or equal to 20% of maxHealth, signal an event that health is low
             HealthLow?.Invoke();
         }

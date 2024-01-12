@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     public Image bloodFlashImage;
     public Color bloodFlashColor;
 
+    //audio
+    public AudioSource lowHealth;
     //
     public float displayMessageTime = 4f;
 
@@ -30,7 +32,8 @@ public class UIManager : MonoBehaviour
         RoundManager.EnemyKilled += UpdateEnemiesLeftUI;
         RoundManager.EnemySpawned += UpdateEnemiesLeftUI;
         RoundManager.GameOverEvent += GameOver;
-        Player.Instance.HealthLow += 
+        Player.Instance.HealthLow += HealthLow;
+        Player.Instance.PlayerDead += GameOver;
 
         dayNightController.DuskStarted += Dusk;
 
@@ -99,13 +102,16 @@ public class UIManager : MonoBehaviour
 
     public void HealthLow()
     {
+        Debug.Log("and Im in UI manager is low!");
         //tint the screen red flashing, add a heartbeat sound
-        bloodFlashImage.DOColor(bloodFlashColor, 2).SetLoops(-1);
-
+        bloodFlashImage.DOColor(bloodFlashColor, 1.75f).SetEase(Ease.InOutFlash).SetLoops(-1);
+        //sfx
+        lowHealth.Play();
     }
 
     public void GameOver()
     {
-        StartCoroutine(UpdateStatusDisplayUI("Game Over"));
+        ////StartCoroutine(UpdateStatusDisplayUI("Game Over"));
+        lowHealth.pitch = 0.6f;
     }
 }
