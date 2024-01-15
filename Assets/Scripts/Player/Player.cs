@@ -37,7 +37,7 @@ public class Player : MonoBehaviour, IDamageable
         int randomFileNumber = UnityEngine.Random.Range(1, 4);
         FindAnyObjectByType<AudioManager>().PlaySFXAudio("player-take-damage-" + randomFileNumber.ToString());
         //visual indication
-        camera.DOShakeRotation(0.3f, 10, 3);
+        camera.DOShakeRotation(0.3f, 10, 3).OnComplete(ResetCameraPosition);
         //
         playerHealth.TakeDamage(damage);
         uiManager.UpdateHealthUI();
@@ -53,6 +53,11 @@ public class Player : MonoBehaviour, IDamageable
             HealthLow?.Invoke();
         }
         
+    }
+
+    public void ResetCameraPosition()
+    {
+        camera.transform.localRotation = new Quaternion(0, 0, 0, 1);
     }
 
     public void Die()

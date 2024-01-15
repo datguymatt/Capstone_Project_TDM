@@ -25,7 +25,7 @@ public class DayNightController : MonoBehaviour
         RoundManager.TransitionToNightStart += SwitchToNightTime;
         RoundManager.TransitionToDayStart += SwitchToDayTime;
         RoundManager.TransitionToDuskStart += SwitchToDuskTime;
-
+        RoundManager.NightStart += SwitchToNightTime;
         moonMaterial.color = Color.white;
         isFirstRound = true;
 
@@ -41,6 +41,7 @@ public class DayNightController : MonoBehaviour
     private void OnDestroy()
     {
         RoundManager.TransitionToNightStart -= SwitchToNightTime;
+        RoundManager.NightStart -= SwitchToNightTime;
         RoundManager.TransitionToDayStart -= SwitchToDayTime;
         RoundManager.TransitionToDuskStart -= SwitchToDuskTime;
     }
