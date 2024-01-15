@@ -14,6 +14,8 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private Canvas pauseCanvas;
     [SerializeField] private Canvas settingsCanvas;
     [SerializeField] private Canvas audioSettingsCanvas;
+    [SerializeField] private Canvas controlsSettingsCanvas;
+    public Slider sensitivityBar;
     
     private void Start()
     {
@@ -40,6 +42,7 @@ public class PauseMenuManager : MonoBehaviour
         pauseCanvas.gameObject.SetActive(false);
         settingsCanvas.gameObject.SetActive(false);
         audioSettingsCanvas.gameObject.SetActive(false);
+        controlsSettingsCanvas.gameObject.SetActive(false);
         isPaused = false;
     }
 
@@ -66,6 +69,18 @@ public class PauseMenuManager : MonoBehaviour
     {
         audioMixer.SetFloat("masterFilterFreq", 250);
         audioSettingsCanvas.gameObject.SetActive(false);
+        settingsCanvas.gameObject.SetActive(true);
+    }
+
+    public void OpenControlsSettings()
+    {
+        settingsCanvas.gameObject.SetActive(false);
+        controlsSettingsCanvas.gameObject.SetActive(true);
+    }
+
+    public void CloseControlsSettings()
+    {
+        controlsSettingsCanvas.gameObject.SetActive(false);
         settingsCanvas.gameObject.SetActive(true);
     }
 

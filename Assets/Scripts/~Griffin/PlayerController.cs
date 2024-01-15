@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementSpeed = 5f;
     private float moveMultiplier;
     [SerializeField] private float sprintMultiplier = 3f;
-    [SerializeField] private float turnSpeed = 3f;
+    [SerializeField] private float turnSpeed = 360f;
     [SerializeField] private float gravity = -10f;
     private Vector3 playerVelocity;
     [SerializeField] private float jumpVelocity = 20f;
@@ -150,10 +150,10 @@ public class PlayerController : MonoBehaviour
     private void RotatePlayer()
     {
         // Rotate the player
-        transform.Rotate(Vector3.up * mouseXInput * Time.deltaTime * turnSpeed);
+        transform.Rotate(Vector3.up * mouseXInput * Time.deltaTime * (turnSpeed * PauseMenuManager.Instance.sensitivityBar.value));
 
         // Rotate the head
-        camXRotation += mouseYInput * turnSpeed * Time.deltaTime * (invertRotation ? -1 : 1);
+        camXRotation += mouseYInput * (turnSpeed * PauseMenuManager.Instance.sensitivityBar.value)* Time.deltaTime * (invertRotation ? -1 : 1);
         camXRotation = Mathf.Clamp(camXRotation, -85f, 85f);
 
         playerHead.localRotation = Quaternion.Euler(camXRotation, 0, 0);
